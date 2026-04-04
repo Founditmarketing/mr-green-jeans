@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Shield, Zap, Wrench, ArrowRight, Activity, MapPin } from 'lucide-react';
@@ -24,6 +24,24 @@ function AnimatedCounter({ from, to, suffixClassName, suffix = "" }) {
 
 
 export default function Home() {
+  const [scrollY, setScrollY] = useState(0);
+  
+  // Video Sequencer Logic
+  const desktopVideos = ["/hero1-desktop.mp4", "/hero2-desktop.mp4", "/hero-desktop.mp4"];
+  const mobileVideos = ["/hero1-mobile.mp4", "/hero2-mobile.mp4", "/hero-mobile.mp4"];
+  const [deskIdx, setDeskIdx] = useState(0);
+  const [mobIdx, setMobIdx] = useState(0);
+  const deskRef = useRef(null);
+  const mobRef = useRef(null);
+
+  useEffect(() => {
+    if (deskRef.current) deskRef.current.play().catch(() => {});
+  }, [deskIdx]);
+
+  useEffect(() => {
+    if (mobRef.current) mobRef.current.play().catch(() => {});
+  }, [mobIdx]);
+
   return (
     <div style={{ paddingBottom: '0' }}>
       {/* EXTREME HERO SECTION */}
@@ -31,13 +49,17 @@ export default function Home() {
         
         {/* Background Videos */}
         <video 
+          ref={deskRef}
           className="desktop-video"
-          src="/hero-desktop.mp4" autoPlay loop muted playsInline 
+          src={desktopVideos[deskIdx]} autoPlay muted playsInline 
+          onEnded={() => setDeskIdx((prev) => (prev + 1) % desktopVideos.length)}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} 
         />
         <video 
+          ref={mobRef}
           className="mobile-video"
-          src="/hero-mobile.mp4" autoPlay loop muted playsInline 
+          src={mobileVideos[mobIdx]} autoPlay muted playsInline 
+          onEnded={() => setMobIdx((prev) => (prev + 1) % mobileVideos.length)}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} 
         />
 
