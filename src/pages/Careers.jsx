@@ -1,44 +1,44 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, ChevronRight } from 'lucide-react';
+import { ArrowRight, Drill, Shield, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Careers() {
   return (
     <div style={{ paddingTop: '8rem', paddingBottom: '0' }}>
-      <section className="section" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center', padding: '4rem 2rem' }}>
+      <section className="section" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center', padding: '2rem 2rem 4rem' }}>
         <div className="container">
-          <div style={{ background: 'var(--dark2)', border: '1px solid var(--glass-border)', borderRadius: '20px', overflow: 'hidden', display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '600px' }} className="career-grid">
+          <div style={{ background: 'var(--dark2)', border: '1px solid var(--glass-border)', borderRadius: '16px', overflow: 'hidden', display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)', minHeight: '500px' }} className="career-grid">
             
-            <div style={{ padding: '5rem 4rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
-              <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 0% 0%, rgba(0,212,255,0.05) 0%, transparent 70%)' }}></div>
-              <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} style={{ position: 'relative', zIndex: 1 }}>
+            <div style={{ padding: '4rem 3rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} style={{ position: 'relative', zIndex: 1 }}>
                 <div className="section-label">Join The Crew</div>
-                <h1 className="section-title">BUILD YOUR CAREER AT <span style={{ color: 'var(--volt)' }}>SHELTON</span></h1>
-                <p style={{ fontSize: '1.1rem', color: 'var(--text)', lineHeight: 1.8, marginBottom: '3rem', maxWidth: '450px' }}>
-                  We invest in our people with industry-leading training, advancement opportunities, and a culture that puts your growth and safety first.
+                <h1 className="section-title">BUILD YOUR FUTURE<br/><span style={{ color: 'var(--volt)', textShadow: '0 0 20px rgba(0,229,255,0.4)' }}>WITH US</span></h1>
+                <p style={{ fontSize: '1.1rem', color: 'var(--text)', lineHeight: 1.6, marginBottom: '2rem' }}>
+                  We invest in our people with industry-leading training, rapid advancement, and a culture that prioritizes your safety above all else.
                 </p>
-                <ul style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '3rem' }}>
-                  {[
-                    'Competitive compensation & benefits',
-                    'Industry-leading safety training',
-                    'Career advancement opportunities',
-                    'Veteran-friendly workplace'
-                  ].map((benefit, i) => (
-                    <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontFamily: 'Barlow Condensed', fontSize: '1.1rem', color: 'var(--white)', letterSpacing: '0.05em' }}>
-                      <div style={{ width: '24px', height: '24px', background: 'var(--volt)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <ChevronRight size={16} color="var(--dark)" />
-                      </div>
-                      {benefit}
-                    </li>
-                  ))}
-                </ul>
-                <Link to="/contact" className="btn btn-volt">View Open Positions <ArrowRight size={18} style={{ marginLeft: '10px' }} /></Link>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem', marginBottom: '3rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div style={{ width: '40px', height: '40px', background: 'rgba(0,229,255,0.1)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><TrendingUp size={18} color="var(--volt)" /></div>
+                    <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--white)' }}>Competitive Pay & Advancement</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div style={{ width: '40px', height: '40px', background: 'rgba(0,229,255,0.1)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Shield size={18} color="var(--volt)" /></div>
+                    <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--white)' }}>Industry-Leading Safety Training</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div style={{ width: '40px', height: '40px', background: 'rgba(0,229,255,0.1)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Drill size={18} color="var(--volt)" /></div>
+                    <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--white)' }}>Veteran-Friendly Culture</span>
+                  </div>
+                </div>
+
+                <Link to="/contact" className="btn btn-volt" style={{ width: '100%' }}>View Open Positions <ArrowRight size={18} style={{ marginLeft: '10px' }} /></Link>
               </motion.div>
             </div>
 
             <div style={{ position: 'relative' }}>
               <img src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80" alt="Construction Worker" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, var(--dark2) 0%, transparent 100%)' }}></div>
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, var(--dark2) 0%, transparent 40%)' }}></div>
             </div>
 
           </div>
@@ -47,12 +47,9 @@ export default function Careers() {
 
       <style>{`
         @media(max-width: 900px) {
-          .career-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .career-grid > div:nth-child(2) {
-             min-height: 400px;
-          }
+          .career-grid { grid-template-columns: 1fr !important; }
+          .career-grid > div:nth-child(2) { min-height: 300px; }
+          .career-grid > div:nth-child(1) { padding: 3rem 2rem !important; }
         }
       `}</style>
     </div>

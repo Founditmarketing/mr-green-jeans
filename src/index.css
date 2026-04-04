@@ -31,11 +31,18 @@ html, body {
   color: var(--text);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  font-size: 16px; /* Rigid 16px minimum for mobile */
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  min-height: 44px; /* World-class touch target min */
+  display: inline-flex;
+  align-items: center;
+}
+.desktop-nav a {
+  min-height: auto; /* Desktop doesn't need huge nav hits */
 }
 
 ul {
@@ -45,6 +52,11 @@ ul {
 img, video {
   max-width: 100%;
   display: block;
+}
+
+button {
+  min-height: 44px; /* Touch target min */
+  min-width: 44px;
 }
 
 /* Typography Utility */

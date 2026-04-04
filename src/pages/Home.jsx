@@ -80,7 +80,7 @@ export default function Home() {
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.5 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
             style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', padding: '0.5rem 1.2rem', background: 'rgba(245,166,35,0.08)', border: '1px solid rgba(245,166,35,0.4)', borderRadius: '100px', marginBottom: '2rem', boxShadow: '0 0 20px rgba(245,166,35,0.2)' }}
           >
             <motion.div 
@@ -94,7 +94,7 @@ export default function Home() {
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.7 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
             style={{ fontFamily: 'Bebas Neue', fontSize: 'clamp(4rem, 9vw, 8.5rem)', color: 'var(--white)', lineHeight: 0.9, letterSpacing: '0.05em', marginBottom: '1.5rem', maxWidth: '1000px', textShadow: '0 10px 30px rgba(0,0,0,0.8)' }}
           >
             POWERING THE <motion.span 
@@ -109,7 +109,7 @@ export default function Home() {
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.9 }}
+            transition={{ duration: 0.4, delay: 0.6 }}
             style={{ fontSize: '1.25rem', lineHeight: 1.7, color: 'var(--text)', maxWidth: '600px', marginBottom: '3rem', textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}
           >
             One of the fastest-growing overhead and underground utility contractors in the Gulf South. Safety-first. Mission-ready. Built to perform.
@@ -118,7 +118,7 @@ export default function Home() {
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 2.1 }}
+            transition={{ duration: 0.4, delay: 0.8 }}
             style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}
           >
             <Link to="/services" className="btn btn-volt" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Explore Our Services</Link>
@@ -128,7 +128,7 @@ export default function Home() {
 
         {/* Scroll Indicator */}
         <motion.div 
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.5, duration: 1 }}
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 0.4 }}
           style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}
         >
           <span style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text)' }}>Scroll</span>
@@ -214,7 +214,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
-                transition={{ delay: idx * 0.2, duration: 0.6 }}
+                transition={{ delay: idx * 0.1, duration: 0.4 }}
                 whileHover={{ y: -10, borderColor: 'var(--volt)', boxShadow: '0 20px 50px rgba(0,212,255,0.15)' }}
                 style={{ background: 'var(--dark)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '3.5rem 2.5rem', position: 'relative', cursor: 'pointer', overflow: 'hidden', transition: 'all 0.4s' }}
               >
