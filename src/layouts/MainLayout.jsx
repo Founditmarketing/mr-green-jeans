@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import MobileActionBar from '../components/MobileActionBar';
+import Copilot from '../components/Copilot';
 
 export default function MainLayout() {
   return (
@@ -12,6 +13,7 @@ export default function MainLayout() {
       </main>
       <Footer />
       <MobileActionBar />
+      <Copilot />
       <style>{`
         @media(min-width: 901px) {
           .mobile-main { padding-bottom: 0 !important; }

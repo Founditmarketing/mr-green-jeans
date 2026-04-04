@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Shield, Zap, Wrench, ArrowRight } from 'lucide-react';
+import { Shield, Zap, Wrench, ArrowRight, Activity, MapPin } from 'lucide-react';
 import Marquee from '../components/Marquee';
 
 function AnimatedCounter({ from, to, suffixClassName, suffix = "" }) {
@@ -193,6 +193,73 @@ export default function Home() {
                 <AnimatedCounter from={0} to={140} suffix="+" suffixClassName="amber-plus" />
               </motion.div>
               <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.95rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Fully Equipped Crews</div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* OPERATIONS COMMAND CENTER MAP */}
+      <section className="section" style={{ background: 'var(--dark)', borderTop: '1px solid var(--glass-border)', padding: '5rem 2rem' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.5fr)', gap: '4rem', alignItems: 'center' }}>
+            
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <div className="section-label" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Activity size={16} /> LIVE OPS TELEMETRY</div>
+              <h2 className="section-title">GULF SOUTH <span style={{ color: 'var(--red)', textShadow: '0 0 20px rgba(230, 30, 37,0.4)' }}>GRID COMMAND.</span></h2>
+              <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: 'var(--text)', marginBottom: '2rem' }}>
+                Our proprietary AI logistics system monitors regional weather threats, predicting infrastructure failure points before they collapse. When a storm makes landfall, our crews are already staged at the perimeter.
+              </p>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {[
+                  { status: 'ACTIVE', color: 'var(--blue)', loc: 'Baton Rouge, LA', desc: '138kV Reconductor Staging' },
+                  { status: 'WARNING', color: 'var(--red)', loc: 'Houston, TX', desc: 'Predictive Hurricane Staging' },
+                  { status: 'ACTIVE', color: 'var(--blue)', loc: 'Mobile, AL', desc: 'Underground Vault Rehab' }
+                ].map((item, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'var(--dark2)', padding: '1rem 1.5rem', borderRadius: '8px', borderLeft: `3px solid ${item.color}` }}>
+                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: item.color, boxShadow: `0 0 10px ${item.color}` }} />
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontFamily: 'Barlow Condensed', fontWeight: 700, letterSpacing: '0.1em', fontSize: '1.1rem', color: 'var(--white)' }}>{item.loc}</div>
+                      <div style={{ fontSize: '0.85rem', color: 'var(--text)' }}>{item.desc}</div>
+                    </div>
+                    <div style={{ fontFamily: 'Bebas Neue', letterSpacing: '0.05em', color: item.color }}>{item.status}</div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} style={{ position: 'relative', height: '500px', background: 'var(--dark2)', borderRadius: '24px', border: '1px solid var(--glass-border)', overflow: 'hidden' }}>
+              {/* Radar Grid CSS Background */}
+              <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(0,168,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,168,255,0.05) 1px, transparent 1px)', backgroundSize: '40px 40px', zIndex: 0 }} />
+              
+              {/* Radar Sweep */}
+              <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 8, ease: "linear" }} style={{ position: 'absolute', top: '50%', left: '50%', width: '150%', height: '150%', background: 'conic-gradient(from 0deg, transparent 70%, rgba(0,168,255,0.2) 100%)', transformOrigin: '0 0', zIndex: 1, pointerEvents: 'none' }} />
+
+              {/* Houston Node */}
+              <div style={{ position: 'absolute', top: '60%', left: '30%', zIndex: 2 }}>
+                <motion.div animate={{ scale: [1, 2.5, 1], opacity: [0.8, 0, 0.8] }} transition={{ repeat: Infinity, duration: 2 }} style={{ position: 'absolute', inset: -15, background: 'var(--red)', borderRadius: '50%', filter: 'blur(4px)' }} />
+                <div style={{ width: '12px', height: '12px', background: 'var(--white)', borderRadius: '50%', boxShadow: '0 0 10px white, 0 0 20px var(--red)' }} />
+                <div style={{ position: 'absolute', top: '-25px', left: '20px', fontFamily: 'Barlow Condensed', color: 'var(--white)', fontWeight: 600, letterSpacing: '0.1em', background: 'rgba(230,30,37,0.2)', padding: '2px 8px', borderRadius: '4px', border: '1px solid var(--red)', backdropFilter: 'blur(4px)' }}>THREAT: SEVERE</div>
+              </div>
+
+              {/* Baton Rouge Node */}
+              <div style={{ position: 'absolute', top: '40%', left: '55%', zIndex: 2 }}>
+                <motion.div animate={{ scale: [1, 2, 1], opacity: [0.5, 0, 0.5] }} transition={{ repeat: Infinity, duration: 3, delay: 1 }} style={{ position: 'absolute', inset: -10, background: 'var(--blue)', borderRadius: '50%', filter: 'blur(4px)' }} />
+                <div style={{ width: '12px', height: '12px', background: 'var(--white)', borderRadius: '50%', boxShadow: '0 0 10px white, 0 0 20px var(--blue)' }} />
+                <div style={{ position: 'absolute', top: '-25px', left: '20px', fontFamily: 'Barlow Condensed', color: 'var(--blue)', fontWeight: 600, letterSpacing: '0.1em', background: 'rgba(0,168,255,0.2)', padding: '2px 8px', borderRadius: '4px', border: '1px solid var(--blue)', backdropFilter: 'blur(4px)' }}>STAGED</div>
+              </div>
+
+              {/* Mobile AL Node */}
+              <div style={{ position: 'absolute', top: '35%', left: '75%', zIndex: 2 }}>
+                <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0, 0.4] }} transition={{ repeat: Infinity, duration: 4 }} style={{ position: 'absolute', inset: -8, background: 'var(--blue)', borderRadius: '50%', filter: 'blur(4px)' }} />
+                <div style={{ width: '8px', height: '8px', background: 'var(--white)', borderRadius: '50%', boxShadow: '0 0 10px white, 0 0 20px var(--blue)' }} />
+              </div>
+
+              <div style={{ position: 'absolute', bottom: '1.5rem', left: '1.5rem', zIndex: 3, background: 'rgba(6, 11, 20, 0.8)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--glass-border)', backdropFilter: 'blur(10px)' }}>
+                <div style={{ fontFamily: 'Bebas Neue', color: 'var(--white)', fontSize: '1.2rem', letterSpacing: '0.05em' }}>SYSTEMS NOMINAL</div>
+                <div style={{ color: 'var(--blue)', fontSize: '0.8rem', fontFamily: 'Barlow Condensed', letterSpacing: '0.1em' }}>UPDATING FEED: 0ms</div>
+              </div>
             </motion.div>
 
           </div>
