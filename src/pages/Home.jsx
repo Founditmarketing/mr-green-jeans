@@ -202,7 +202,7 @@ export default function Home() {
       {/* OPERATIONS COMMAND CENTER MAP */}
       <section className="section" style={{ background: 'var(--dark)', borderTop: '1px solid var(--glass-border)', padding: '5rem 2rem' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.5fr)', gap: '4rem', alignItems: 'center' }}>
+          <div className="ops-layout" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.5fr)', gap: '4rem', alignItems: 'center' }}>
             
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="section-label" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Activity size={16} /> LIVE OPS TELEMETRY</div>
@@ -229,7 +229,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} style={{ position: 'relative', width: '100%', borderRadius: '24px', border: '1px solid var(--glass-border)', overflow: 'hidden', background: 'var(--dark2)' }}>
+            <motion.div className="radar-map-container" initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} style={{ position: 'relative', width: '100%', borderRadius: '24px', border: '1px solid var(--glass-border)', overflow: 'hidden', background: 'var(--dark2)' }}>
               
               {/* Swipe Wrapper for Mobile */}
               <div className="hide-scrollbar" style={{ width: '100%', overflowX: 'auto', overflowY: 'hidden' }}>
@@ -335,6 +335,10 @@ export default function Home() {
 
       <style>{`
         .amber-plus { font-size: 0.6em; color: var(--red); }
+        @media(max-width: 900px) {
+          .ops-layout { grid-template-columns: 1fr !important; gap: 2rem !important; }
+          .radar-map-container { display: none !important; }
+        }
       `}</style>
     </div>
   );
