@@ -27,11 +27,6 @@ function AnimatedCounter({ from, to, suffixClassName, suffix = "" }) {
 export default function Home() {
   const heroRef = useRef(null);
 
-  // Power Restoration Scroll Physics
-  const { scrollYProgress } = useScroll();
-  const blackoutOpacity = useTransform(scrollYProgress, [0, 0.12], [0.65, 0]);
-  const surgeGlow = useTransform(scrollYProgress, [0.08, 0.14, 0.18], [0, 1, 0]);
-
   return (
     <div style={{ paddingBottom: '0' }}>
       {/* EXTREME HERO SECTION */}
@@ -40,32 +35,10 @@ export default function Home() {
         {/* Procedural Electric Particle Field */}
         <ElectricField />
 
-        {/* Gradient Overlay */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(10,12,16,0.5) 70%, var(--dark) 100%)', zIndex: 1 }} />
+        {/* Bottom fade only — let the canvas breathe */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 0%, transparent 60%, var(--dark) 100%)', zIndex: 1, pointerEvents: 'none' }} />
 
-        {/* Power Restoration Blackout Layer */}
-        <motion.div 
-          style={{ 
-            position: 'absolute', inset: 0, 
-            background: 'var(--dark)', 
-            opacity: blackoutOpacity, 
-            zIndex: 2, 
-            pointerEvents: 'none' 
-          }} 
-        />
-
-        {/* Blue Surge Flash */}
-        <motion.div 
-          style={{ 
-            position: 'absolute', inset: 0, 
-            background: 'radial-gradient(ellipse at center, rgba(0,168,255,0.15) 0%, transparent 70%)', 
-            opacity: surgeGlow, 
-            zIndex: 2, 
-            pointerEvents: 'none' 
-          }} 
-        />
-
-        <div className="container" style={{ paddingTop: '8rem', zIndex: 3 }}>
+        <div className="container" style={{ paddingTop: 'clamp(7rem, 15vh, 10rem)', zIndex: 3, position: 'relative' }}>
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -116,8 +89,9 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator — desktop only */}
         <motion.div 
+          className="desktop-only"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 0.4 }}
           style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}
         >
