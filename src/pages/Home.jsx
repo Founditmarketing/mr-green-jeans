@@ -44,7 +44,7 @@ const ParticleSystem = () => {
             left: `${Math.random() * 100}%`,
             width: `${2 + Math.random() * 3}px`,
             height: `${2 + Math.random() * 3}px`,
-            background: Math.random() > 0.5 ? 'var(--volt)' : 'var(--amber)',
+            background: Math.random() > 0.5 ? 'var(--blue)' : 'var(--red)',
             borderRadius: '50%',
             boxShadow: '0 0 10px currentColor'
           }}
@@ -81,14 +81,14 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', padding: '0.5rem 1.2rem', background: 'rgba(245,166,35,0.08)', border: '1px solid rgba(245,166,35,0.4)', borderRadius: '100px', marginBottom: '2rem', boxShadow: '0 0 20px rgba(245,166,35,0.2)' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', padding: '0.5rem 1.2rem', background: 'rgba(230, 30, 37,0.08)', border: '1px solid rgba(230, 30, 37,0.4)', borderRadius: '100px', marginBottom: '2rem', boxShadow: '0 0 20px rgba(230, 30, 37,0.2)' }}
           >
             <motion.div 
               animate={{ opacity: [0.3, 1, 0.3],scale: [0.9, 1.1, 0.9] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
-              style={{ width: '8px', height: '8px', background: 'var(--amber)', borderRadius: '50%', boxShadow: '0 0 10px var(--amber)' }}
+              style={{ width: '8px', height: '8px', background: 'var(--red)', borderRadius: '50%', boxShadow: '0 0 10px var(--red)' }}
             />
-            <span style={{ fontFamily: 'Barlow Condensed', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--amber)' }}>Veteran-Owned &bull; Family Driven</span>
+            <span style={{ fontFamily: 'Barlow Condensed', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--red)' }}>Veteran-Owned &bull; Family Driven</span>
           </motion.div>
           
           <motion.h1 
@@ -98,9 +98,9 @@ export default function Home() {
             style={{ fontFamily: 'Bebas Neue', fontSize: 'clamp(4rem, 9vw, 8.5rem)', color: 'var(--white)', lineHeight: 0.9, letterSpacing: '0.05em', marginBottom: '1.5rem', maxWidth: '1000px', textShadow: '0 10px 30px rgba(0,0,0,0.8)' }}
           >
             POWERING THE <motion.span 
-              animate={{ textShadow: ['0 0 10px rgba(0,212,255,0.3)', '0 0 30px rgba(0,212,255,0.8), 0 0 60px rgba(0,212,255,0.4)', '0 0 10px rgba(0,212,255,0.3)'] }}
+              animate={{ textShadow: ['0 0 10px rgba(0, 168, 255,0.3)', '0 0 30px rgba(0, 168, 255,0.8), 0 0 60px rgba(0, 168, 255,0.4)', '0 0 10px rgba(0, 168, 255,0.3)'] }}
               transition={{ repeat: Infinity, duration: 3 }}
-              style={{ color: 'var(--volt)', display: 'inline-block' }}>GRID</motion.span>
+              style={{ color: 'var(--blue)', display: 'inline-block' }}>GRID</motion.span>
             <span style={{ display: 'block', fontSize: 'clamp(1.2rem, 3vw, 2.8rem)', fontFamily: 'Barlow', fontWeight: '500', color: 'var(--text)', letterSpacing: '0', marginTop: '1rem' }}>
               Electric Utility Transmission & Distribution Systems
             </span>
@@ -121,7 +121,7 @@ export default function Home() {
             transition={{ duration: 0.4, delay: 0.8 }}
             style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}
           >
-            <Link to="/services" className="btn btn-volt" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Explore Our Services</Link>
+            <Link to="/services" className="btn btn-blue" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Explore Our Services</Link>
             <Link to="/contact" className="btn btn-outline" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Request a Quote</Link>
           </motion.div>
         </div>
@@ -134,7 +134,7 @@ export default function Home() {
           <span style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text)' }}>Scroll</span>
           <motion.div 
             animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }}
-            style={{ width: '1px', height: '60px', background: 'linear-gradient(to bottom, var(--volt), transparent)' }} 
+            style={{ width: '1px', height: '60px', background: 'linear-gradient(to bottom, var(--blue), transparent)' }} 
           />
         </motion.div>
       </section>
@@ -144,18 +144,18 @@ export default function Home() {
 
       {/* COUNTING STATS BENTO GRID */}
       <section className="section" style={{ background: 'var(--dark)', position: 'relative', overflow: 'hidden', padding: '7rem 2rem' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 100%, rgba(0,212,255,0.05) 0%, transparent 60%)', zIndex: 0 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 100%, rgba(0, 168, 255,0.05) 0%, transparent 60%)', zIndex: 0 }} />
         <div className="container">
           <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
             
             <motion.div 
-              whileHover={{ y: -10, borderColor: 'var(--volt)', boxShadow: '0 20px 40px rgba(0,212,255,0.15)' }}
+              whileHover={{ y: -10, borderColor: 'var(--blue)', boxShadow: '0 20px 40px rgba(0, 168, 255,0.15)' }}
               style={{ background: 'var(--dark2)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '4rem 2rem', textAlign: 'center', transition: 'all 0.4s', position: 'relative', overflow: 'hidden' }}
             >
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--volt), transparent)' }}></div>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--blue), transparent)' }}></div>
               <motion.div 
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }}
-                style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontFamily: 'Bebas Neue', color: 'var(--volt)', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px rgba(0,212,255,0.3)' }}
+                style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontFamily: 'Bebas Neue', color: 'var(--blue)', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px rgba(0, 168, 255,0.3)' }}
               >
                 <AnimatedCounter from={0} to={1000} suffix="+" suffixClassName="amber-plus" />
               </motion.div>
@@ -163,13 +163,13 @@ export default function Home() {
             </motion.div>
 
             <motion.div 
-              whileHover={{ y: -10, borderColor: 'var(--volt)', boxShadow: '0 20px 40px rgba(0,212,255,0.15)' }}
+              whileHover={{ y: -10, borderColor: 'var(--blue)', boxShadow: '0 20px 40px rgba(0, 168, 255,0.15)' }}
               style={{ background: 'var(--dark2)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '4rem 2rem', textAlign: 'center', transition: 'all 0.4s', position: 'relative', overflow: 'hidden' }}
             >
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--volt), transparent)' }}></div>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--blue), transparent)' }}></div>
               <motion.div 
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }}
-                style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontFamily: 'Bebas Neue', color: 'var(--volt)', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px rgba(0,212,255,0.3)' }}
+                style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontFamily: 'Bebas Neue', color: 'var(--blue)', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px rgba(0, 168, 255,0.3)' }}
               >
                 <AnimatedCounter from={0} to={41200} suffix="+" suffixClassName="amber-plus" />
               </motion.div>
@@ -177,13 +177,13 @@ export default function Home() {
             </motion.div>
 
             <motion.div 
-              whileHover={{ y: -10, borderColor: 'var(--volt)', boxShadow: '0 20px 40px rgba(0,212,255,0.15)' }}
+              whileHover={{ y: -10, borderColor: 'var(--blue)', boxShadow: '0 20px 40px rgba(0, 168, 255,0.15)' }}
               style={{ background: 'var(--dark2)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '4rem 2rem', textAlign: 'center', transition: 'all 0.4s', position: 'relative', overflow: 'hidden' }}
             >
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--volt), transparent)' }}></div>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--blue), transparent)' }}></div>
               <motion.div 
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }}
-                style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontFamily: 'Bebas Neue', color: 'var(--volt)', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px rgba(0,212,255,0.3)' }}
+                style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontFamily: 'Bebas Neue', color: 'var(--blue)', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px rgba(0, 168, 255,0.3)' }}
               >
                 <AnimatedCounter from={0} to={100} suffix="+" suffixClassName="amber-plus" />
               </motion.div>
@@ -199,15 +199,15 @@ export default function Home() {
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 5rem' }}>
             <div className="section-label">Capabilities</div>
-            <h2 className="section-title">FULL-SPECTRUM <span style={{ color: 'var(--amber)', textShadow: '0 0 20px rgba(245,166,35,0.4)' }}>ENERGY SERVICES</span></h2>
+            <h2 className="section-title">FULL-SPECTRUM <span style={{ color: 'var(--red)', textShadow: '0 0 20px rgba(230, 30, 37,0.4)' }}>ENERGY SERVICES</span></h2>
             <p style={{ fontSize: '1.15rem', lineHeight: 1.7 }}>From critical infrastructure construction to emergency storm response, we bring the expertise required to keep power flowing reliably.</p>
           </div>
 
           <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
             {[
-              { title: 'Distribution', icon: <Zap color="var(--volt)" size={32} />, desc: 'Turnkey overhead and underground distribution — new installations, reconductors, rehab work. From backyard pole changeouts to full right-of-way builds.' },
-              { title: 'Transmission', icon: <Shield color="var(--volt)" size={32} />, desc: 'High-voltage transmission line construction, maintenance, and emergency repair. Engineered for reliability at scale across critical infrastructure.' },
-              { title: 'Substation', icon: <Wrench color="var(--volt)" size={32} />, desc: 'Complete substation construction, upgrades, and maintenance. From foundations to energization — we deliver reliable power conversion.' }
+              { title: 'Distribution', icon: <Zap color="var(--blue)" size={32} />, desc: 'Turnkey overhead and underground distribution — new installations, reconductors, rehab work. From backyard pole changeouts to full right-of-way builds.' },
+              { title: 'Transmission', icon: <Shield color="var(--blue)" size={32} />, desc: 'High-voltage transmission line construction, maintenance, and emergency repair. Engineered for reliability at scale across critical infrastructure.' },
+              { title: 'Substation', icon: <Wrench color="var(--blue)" size={32} />, desc: 'Complete substation construction, upgrades, and maintenance. From foundations to energization — we deliver reliable power conversion.' }
             ].map((srv, idx) => (
               <motion.div 
                 key={srv.title}
@@ -215,21 +215,21 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ delay: idx * 0.1, duration: 0.4 }}
-                whileHover={{ y: -10, borderColor: 'var(--volt)', boxShadow: '0 20px 50px rgba(0,212,255,0.15)' }}
+                whileHover={{ y: -10, borderColor: 'var(--blue)', boxShadow: '0 20px 50px rgba(0, 168, 255,0.15)' }}
                 style={{ background: 'var(--dark)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '3.5rem 2.5rem', position: 'relative', cursor: 'pointer', overflow: 'hidden', transition: 'all 0.4s' }}
               >
-                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--volt), var(--amber))', transform: 'scaleX(0)', transformOrigin: 'left', transition: 'transform 0.5s' }} className="hover-line" />
-                <div style={{ width: '70px', height: '70px', background: 'rgba(0,212,255,0.06)', border: '1px solid rgba(0,212,255,0.2)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '2rem', boxShadow: '0 0 20px rgba(0,212,255,0.1)' }} className="icon-box">
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--blue), var(--red))', transform: 'scaleX(0)', transformOrigin: 'left', transition: 'transform 0.5s' }} className="hover-line" />
+                <div style={{ width: '70px', height: '70px', background: 'rgba(0, 168, 255,0.06)', border: '1px solid rgba(0, 168, 255,0.2)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '2rem', boxShadow: '0 0 20px rgba(0, 168, 255,0.1)' }} className="icon-box">
                   {srv.icon}
                 </div>
                 <h3 style={{ fontFamily: 'Bebas Neue', fontSize: '2rem', color: 'var(--white)', marginBottom: '1rem', letterSpacing: '0.05em' }}>{srv.title}</h3>
                 <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--text)', marginBottom: '2rem' }}>{srv.desc}</p>
-                <Link to="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'Barlow Condensed', fontSize: '1rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--volt)' }}>
+                <Link to="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'Barlow Condensed', fontSize: '1rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--blue)' }}>
                   Learn More <ArrowRight size={18} />
                 </Link>
                 <style>{`
                   div[style*="cursor: pointer"]:hover .hover-line { transform: scaleX(1) !important; }
-                  div[style*="cursor: pointer"]:hover .icon-box { background: rgba(0,212,255,0.15) !important; border-color: var(--volt) !important; box-shadow: 0 0 30px rgba(0,212,255,0.3) !important; }
+                  div[style*="cursor: pointer"]:hover .icon-box { background: rgba(0, 168, 255,0.15) !important; border-color: var(--blue) !important; box-shadow: 0 0 30px rgba(0, 168, 255,0.3) !important; }
                 `}</style>
               </motion.div>
             ))}
@@ -238,7 +238,7 @@ export default function Home() {
       </section>
 
       <style>{`
-        .amber-plus { font-size: 0.6em; color: var(--amber); }
+        .amber-plus { font-size: 0.6em; color: var(--red); }
       `}</style>
     </div>
   );

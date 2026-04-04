@@ -27,10 +27,10 @@ export default function Preloader() {
             animate={{ 
               scale: [0.8, 1.2, 1], 
               opacity: [0, 1, 1],
-              filter: ['drop-shadow(0 0 0px var(--volt))', 'drop-shadow(0 0 40px var(--volt))', 'drop-shadow(0 0 20px var(--volt))']
+              filter: ['drop-shadow(0 0 0px var(--blue))', 'drop-shadow(0 0 40px var(--blue))', 'drop-shadow(0 0 20px var(--blue))']
             }}
             transition={{ duration: 1.2, ease: "easeOut", repeat: Infinity, repeatType: "reverse" }}
-            style={{ width: '80px', height: '80px', color: 'var(--volt)' }}
+            style={{ width: '80px', height: '80px', color: 'var(--blue)' }}
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
@@ -42,8 +42,8 @@ export default function Preloader() {
             transition={{ delay: 0.4 }}
             style={{
               fontFamily: 'Bebas Neue', fontSize: '1.5rem', letterSpacing: '0.4em', 
-              color: 'var(--volt)', marginTop: '2rem',
-              textShadow: '0 0 10px rgba(0,212,255,0.5)'
+              color: 'var(--blue)', marginTop: '2rem',
+              textShadow: '0 0 10px rgba(0, 168, 255,0.5)'
             }}
           >
             SHELTON ENERGY

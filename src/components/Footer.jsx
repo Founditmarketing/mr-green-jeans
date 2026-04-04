@@ -22,7 +22,7 @@ export default function Footer() {
           <h4 style={{ fontFamily: 'Barlow Condensed', fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--white)', marginBottom: '1.25rem' }}>Company</h4>
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {['About', 'Safety', 'Careers', 'Contact'].map(link => (
-              <li key={link}><Link to={`/${link.toLowerCase()}`} style={{ color: 'var(--text)', transition: 'color 0.3s' }} onMouseOver={e => e.currentTarget.style.color='var(--volt)'} onMouseOut={e => e.currentTarget.style.color='var(--text)'}>{link}</Link></li>
+              <li key={link}><Link to={`/${link.toLowerCase()}`} style={{ color: 'var(--text)', transition: 'color 0.3s' }} onMouseOver={e => e.currentTarget.style.color='var(--blue)'} onMouseOut={e => e.currentTarget.style.color='var(--text)'}>{link}</Link></li>
             ))}
           </ul>
         </div>
@@ -31,7 +31,7 @@ export default function Footer() {
           <h4 style={{ fontFamily: 'Barlow Condensed', fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--white)', marginBottom: '1.25rem' }}>Services</h4>
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {['Distribution', 'Transmission', 'Substation', 'Storm Restoration', 'Boring', 'Underground'].map(link => (
-              <li key={link}><Link to={`/services`} style={{ color: 'var(--text)', transition: 'color 0.3s' }} onMouseOver={e => e.currentTarget.style.color='var(--volt)'} onMouseOut={e => e.currentTarget.style.color='var(--text)'}>{link}</Link></li>
+              <li key={link}><Link to={`/services`} style={{ color: 'var(--text)', transition: 'color 0.3s' }} onMouseOver={e => e.currentTarget.style.color='var(--blue)'} onMouseOut={e => e.currentTarget.style.color='var(--text)'}>{link}</Link></li>
             ))}
           </ul>
         </div>
@@ -50,7 +50,7 @@ export default function Footer() {
       <div style={{ maxWidth: '1300px', margin: '4rem auto 0', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
         <p style={{ fontSize: '0.8rem', color: 'var(--text)', opacity: 0.6 }}>&copy; 2026 Shelton Energy Solutions, LLC. All rights reserved.</p>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <span style={{ fontFamily: 'Barlow Condensed', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--amber)' }}>Verified VOSB</span>
+          <span style={{ fontFamily: 'Barlow Condensed', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--red)' }}>Verified VOSB</span>
         </div>
       </div>
     </footer>

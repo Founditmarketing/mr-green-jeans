@@ -12,27 +12,27 @@ export default function Careers() {
             <div style={{ padding: '4rem 3rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} style={{ position: 'relative', zIndex: 1 }}>
                 <div className="section-label">Join The Crew</div>
-                <h1 className="section-title">BUILD YOUR FUTURE<br/><span style={{ color: 'var(--volt)', textShadow: '0 0 20px rgba(0,229,255,0.4)' }}>WITH US</span></h1>
+                <h1 className="section-title">BUILD YOUR FUTURE<br/><span style={{ color: 'var(--blue)', textShadow: '0 0 20px rgba(0, 168, 255,0.4)' }}>WITH US</span></h1>
                 <p style={{ fontSize: '1.1rem', color: 'var(--text)', lineHeight: 1.6, marginBottom: '2rem' }}>
                   We invest in our people with industry-leading training, rapid advancement, and a culture that prioritizes your safety above all else.
                 </p>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem', marginBottom: '3rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div style={{ width: '40px', height: '40px', background: 'rgba(0,229,255,0.1)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><TrendingUp size={18} color="var(--volt)" /></div>
+                    <div style={{ width: '40px', height: '40px', background: 'rgba(0, 168, 255,0.1)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><TrendingUp size={18} color="var(--blue)" /></div>
                     <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--white)' }}>Competitive Pay & Advancement</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div style={{ width: '40px', height: '40px', background: 'rgba(0,229,255,0.1)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Shield size={18} color="var(--volt)" /></div>
+                    <div style={{ width: '40px', height: '40px', background: 'rgba(0, 168, 255,0.1)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Shield size={18} color="var(--blue)" /></div>
                     <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--white)' }}>Industry-Leading Safety Training</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div style={{ width: '40px', height: '40px', background: 'rgba(0,229,255,0.1)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Drill size={18} color="var(--volt)" /></div>
+                    <div style={{ width: '40px', height: '40px', background: 'rgba(0, 168, 255,0.1)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Drill size={18} color="var(--blue)" /></div>
                     <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--white)' }}>Veteran-Friendly Culture</span>
                   </div>
                 </div>
 
-                <Link to="/contact" className="btn btn-volt" style={{ width: '100%' }}>View Open Positions <ArrowRight size={18} style={{ marginLeft: '10px' }} /></Link>
+                <Link to="/contact" className="btn btn-blue" style={{ width: '100%' }}>View Open Positions <ArrowRight size={18} style={{ marginLeft: '10px' }} /></Link>
               </motion.div>
             </div>
 

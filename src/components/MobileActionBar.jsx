@@ -7,7 +7,7 @@ export default function MobileActionBar() {
       <div className="mobile-action-bar" style={{
         position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1000,
         background: 'rgba(10, 12, 16, 0.85)', backdropFilter: 'blur(16px)',
-        borderTop: '1px solid rgba(0, 212, 255, 0.1)', padding: '1rem',
+        borderTop: '1px solid rgba(0, 168, 255, 0.1)', padding: '1rem',
         display: 'none', alignItems: 'center', justifyContent: 'center', gap: '1rem'
       }}>
         <a 
@@ -19,16 +19,16 @@ export default function MobileActionBar() {
             fontFamily: 'Barlow Condensed', fontWeight: 600, letterSpacing: '0.1em', fontSize: '1rem' 
           }}
         >
-          <Phone size={18} color="var(--volt)" /> Call Us
+          <Phone size={18} color="var(--blue)" /> Call Us
         </a>
         <Link 
           to="/contact" 
           style={{ 
             flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', 
-            background: 'var(--volt)', color: 'var(--dark)', 
+            background: 'var(--blue)', color: 'var(--dark)', 
             padding: '0.8rem', borderRadius: '8px', 
             fontFamily: 'Barlow Condensed', fontWeight: 700, letterSpacing: '0.1em', fontSize: '1rem',
-            boxShadow: '0 0 20px rgba(0,212,255,0.2)'
+            boxShadow: '0 0 20px rgba(0, 168, 255,0.2)'
           }}
         >
           <FileText size={18} /> Get Quote

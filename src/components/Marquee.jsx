@@ -9,7 +9,7 @@ export default function Marquee() {
   ];
 
   return (
-    <div style={{ overflow: 'hidden', borderTop: '1px solid rgba(0,212,255,0.08)', borderBottom: '1px solid rgba(0,212,255,0.08)', padding: '1.2rem 0', background: 'var(--dark2)', position: 'relative' }}>
+    <div style={{ overflow: 'hidden', borderTop: '1px solid rgba(0, 168, 255,0.08)', borderBottom: '1px solid rgba(0, 168, 255,0.08)', padding: '1.2rem 0', background: 'var(--dark2)', position: 'relative' }}>
       <div style={{ position: 'absolute', top: 0, bottom: 0, left: 0, width: '100px', background: 'linear-gradient(90deg, var(--dark2), transparent)', zIndex: 10 }}></div>
       <div style={{ position: 'absolute', top: 0, bottom: 0, right: 0, width: '100px', background: 'linear-gradient(-90deg, var(--dark2), transparent)', zIndex: 10 }}></div>
       
@@ -20,7 +20,7 @@ export default function Marquee() {
       >
         {items.map((item, idx) => (
           <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', padding: '0 2.5rem', whiteSpace: 'nowrap' }}>
-            <div style={{ width: '8px', height: '8px', background: 'var(--volt)', borderRadius: '50%', boxShadow: '0 0 10px rgba(0,212,255,0.8)' }}></div>
+            <div style={{ width: '8px', height: '8px', background: 'var(--blue)', borderRadius: '50%', boxShadow: '0 0 10px rgba(0, 168, 255,0.8)' }}></div>
             <span style={{ fontFamily: 'Bebas Neue', fontSize: '1.3rem', letterSpacing: '0.2em', color: 'var(--text)' }}>
               {item}
             </span>

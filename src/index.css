@@ -61,8 +61,8 @@ button {
 /* Typography Utility */
 .font-bebas { font-family: 'Bebas Neue', sans-serif; }
 .font-barlow-cond { font-family: 'Barlow Condensed', sans-serif; }
-.text-volt { color: var(--volt); }
-.text-amber { color: var(--amber); }
+.text-blue { color: var(--blue); }
+.text-red { color: var(--red); }
 
 /* Global Animations */
 @keyframes fadeInUp {
@@ -81,8 +81,8 @@ button {
 }
 
 @keyframes electricPulse {
-  0%, 100% { text-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
-  50% { text-shadow: 0 0 30px rgba(0, 212, 255, 0.8), 0 0 60px rgba(0, 212, 255, 0.4); }
+  0%, 100% { text-shadow: 0 0 10px rgba(0, 168, 255, 0.3); }
+  50% { text-shadow: 0 0 30px rgba(0, 168, 255, 0.8), 0 0 60px rgba(0, 168, 255, 0.4); }
 }
 
 .animate-up {
@@ -94,8 +94,8 @@ button {
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(0, 168, 255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 168, 255,0.04) 1px, transparent 1px);
   background-size: 60px 60px;
   animation: gridPulse 4s ease-in-out infinite;
   z-index: 0;
@@ -134,12 +134,12 @@ button {
   border: none;
 }
 
-.btn-volt {
-  background: var(--volt);
+.btn-blue {
+  background: var(--blue);
   color: var(--dark);
 }
 
-.btn-volt::before {
+.btn-blue::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -148,12 +148,12 @@ button {
   transition: transform 0.6s;
 }
 
-.btn-volt:hover::before {
+.btn-blue:hover::before {
   transform: translateX(100%);
 }
 
-.btn-volt:hover {
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+.btn-blue:hover {
+  box-shadow: 0 0 30px rgba(0, 168, 255, 0.4);
   transform: translateY(-2px);
 }
 
@@ -164,8 +164,8 @@ button {
 }
 
 .btn-outline:hover {
-  border-color: var(--volt);
-  color: var(--volt);
+  border-color: var(--blue);
+  color: var(--blue);
   transform: translateY(-2px);
 }
 
@@ -176,7 +176,7 @@ button {
   font-weight: 600;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: var(--volt);
+  color: var(--blue);
   margin-bottom: 1rem;
   display: inline-flex;
   align-items: center;
@@ -186,7 +186,7 @@ button {
   content: '';
   width: 30px;
   height: 1px;
-  background: var(--volt);
+  background: var(--blue);
 }
 
 .section-title {
@@ -232,8 +232,8 @@ button {
 .form-group input:focus, 
 .form-group textarea:focus, 
 .form-group select:focus {
-  border-color: var(--volt);
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+  border-color: var(--blue);
+  box-shadow: 0 0 10px rgba(0, 168, 255, 0.1);
 }
 
 .form-group textarea {

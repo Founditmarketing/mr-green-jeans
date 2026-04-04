@@ -56,11 +56,11 @@ export default function Navbar() {
                   style={{
                     fontFamily: 'Barlow Condensed, sans-serif', textTransform: 'uppercase',
                     fontSize: '0.95rem', fontWeight: 600, letterSpacing: '0.12em',
-                    color: location.pathname === (item === 'Home' ? '/' : `/${item.toLowerCase()}`) ? 'var(--volt)' : 'var(--text-light)',
+                    color: location.pathname === (item === 'Home' ? '/' : `/${item.toLowerCase()}`) ? 'var(--blue)' : 'var(--text-light)',
                     transition: 'color 0.2s'
                   }}
-                  onMouseOver={(e) => e.currentTarget.style.color = 'var(--volt)'}
-                  onMouseOut={(e) => e.currentTarget.style.color = location.pathname === (item === 'Home' ? '/' : `/${item.toLowerCase()}`) ? 'var(--volt)' : 'var(--text-light)'}
+                  onMouseOver={(e) => e.currentTarget.style.color = 'var(--blue)'}
+                  onMouseOut={(e) => e.currentTarget.style.color = location.pathname === (item === 'Home' ? '/' : `/${item.toLowerCase()}`) ? 'var(--blue)' : 'var(--text-light)'}
                 >
                   {item}
                 </Link>
@@ -72,11 +72,11 @@ export default function Navbar() {
               style={{ 
                 display: 'flex', alignItems: 'center', gap: '0.5rem', 
                 fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 600,
-                color: 'var(--volt)', border: '1px solid var(--volt)', borderRadius: '4px',
+                color: 'var(--blue)', border: '1px solid var(--blue)', borderRadius: '4px',
                 padding: '0.6rem 1.2rem', transition: 'all 0.2s', minHeight: '44px'
               }}
-              onMouseOver={(e) => { e.currentTarget.style.background = 'var(--volt)'; e.currentTarget.style.color = 'var(--dark)'; e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 229, 255, 0.4)'; }}
-              onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--volt)'; e.currentTarget.style.boxShadow = 'none'; }}
+              onMouseOver={(e) => { e.currentTarget.style.background = 'var(--blue)'; e.currentTarget.style.color = 'var(--dark)'; e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 168, 255, 0.4)'; }}
+              onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--blue)'; e.currentTarget.style.boxShadow = 'none'; }}
             >
               <Phone size={16} /> 318-443-5894
             </a>
@@ -117,14 +117,14 @@ export default function Navbar() {
               transition={{ ease: "circOut", duration: 0.3 }}
               style={{
                 position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1002,
-                background: 'var(--dark)', borderTop: '1px solid var(--volt)',
+                background: 'var(--dark)', borderTop: '1px solid var(--blue)',
                 borderTopLeftRadius: '24px', borderTopRightRadius: '24px',
                 padding: '2rem 2rem 4rem', display: 'flex', flexDirection: 'column', 
-                boxShadow: '0 -10px 40px rgba(0, 229, 255, 0.1)'
+                boxShadow: '0 -10px 40px rgba(0, 168, 255, 0.1)'
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-                <span style={{ fontFamily: 'Barlow Condensed', color: 'var(--volt)', letterSpacing: '0.15em', fontWeight: 600, textTransform: 'uppercase' }}>Navigation</span>
+                <span style={{ fontFamily: 'Barlow Condensed', color: 'var(--blue)', letterSpacing: '0.15em', fontWeight: 600, textTransform: 'uppercase' }}>Navigation</span>
                 <button onClick={() => setMobileMenuOpen(false)} style={{ background: 'rgba(255,255,255,0.05)', border: 'none', borderRadius: '50%', color: 'var(--white)', padding: '0.5rem', width: '44px', height: '44px' }}>
                   <X size={24} />
                 </button>

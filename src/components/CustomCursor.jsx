@@ -47,13 +47,13 @@ export default function CustomCursor() {
           x: mousePosition.x - 4,
           y: mousePosition.y - 4,
           scale: isHovering ? 1.5 : 1,
-          backgroundColor: isHovering ? 'var(--amber)' : 'var(--volt)'
+          backgroundColor: isHovering ? 'var(--red)' : 'var(--blue)'
         }}
         transition={{ type: 'tween', ease: 'backOut', duration: 0.1 }}
         style={{
           position: 'fixed', top: 0, left: 0, width: '8px', height: '8px',
           borderRadius: '50%', pointerEvents: 'none', zIndex: 9999,
-          mixBlendMode: 'screen', boxShadow: '0 0 10px var(--volt)'
+          mixBlendMode: 'screen', boxShadow: '0 0 10px var(--blue)'
         }}
       />
       <motion.div
@@ -63,13 +63,13 @@ export default function CustomCursor() {
           y: mousePosition.y - (isHovering ? 30 : 20),
           width: isHovering ? 60 : 40,
           height: isHovering ? 60 : 40,
-          borderColor: isHovering ? 'var(--amber)' : 'var(--volt)',
+          borderColor: isHovering ? 'var(--red)' : 'var(--blue)',
         }}
         transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.5 }}
         style={{
-          position: 'fixed', top: 0, left: 0, border: '1.5px solid var(--volt)',
+          position: 'fixed', top: 0, left: 0, border: '1.5px solid var(--blue)',
           borderRadius: '50%', pointerEvents: 'none', zIndex: 9998,
-          opacity: 0.5, boxShadow: isHovering ? '0 0 20px rgba(245, 166, 35, 0.5)' : 'inset 0 0 10px rgba(0, 212, 255, 0.2)'
+          opacity: 0.5, boxShadow: isHovering ? '0 0 20px rgba(230, 30, 37, 0.5)' : 'inset 0 0 10px rgba(0, 168, 255, 0.2)'
         }}
       />
       <style>{`
