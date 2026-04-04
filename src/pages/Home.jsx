@@ -22,37 +22,6 @@ function AnimatedCounter({ from, to, suffixClassName, suffix = "" }) {
   );
 }
 
-const ParticleSystem = () => {
-  const particles = Array.from({ length: 40 });
-  return (
-    <div style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none', overflow: 'hidden' }}>
-      {particles.map((_, i) => (
-        <motion.div
-          key={i}
-          animate={{
-            y: ['100vh', '-20vh'],
-            opacity: [0, 0.8, 0],
-          }}
-          transition={{
-            duration: 4 + Math.random() * 5,
-            repeat: Infinity,
-            delay: Math.random() * 5,
-            ease: 'linear'
-          }}
-          style={{
-            position: 'absolute',
-            left: `${Math.random() * 100}%`,
-            width: `${2 + Math.random() * 3}px`,
-            height: `${2 + Math.random() * 3}px`,
-            background: Math.random() > 0.5 ? 'var(--blue)' : 'var(--red)',
-            borderRadius: '50%',
-            boxShadow: '0 0 10px currentColor'
-          }}
-        />
-      ))}
-    </div>
-  );
-};
 
 export default function Home() {
   return (
@@ -77,9 +46,6 @@ export default function Home() {
         {/* Pulsing Grid & Overlay */}
         <div className="grid-bg" style={{ zIndex: 1 }}></div>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,12,16,0.3) 0%, var(--dark) 100%)', zIndex: 1 }} />
-        
-        {/* Sparks */}
-        <ParticleSystem />
 
         <div className="container" style={{ paddingTop: '8rem', zIndex: 2 }}>
           <motion.div 
