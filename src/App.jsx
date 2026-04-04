@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 
 import CustomCursor from './components/CustomCursor';
 import Preloader from './components/Preloader';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Preloader />
       <CustomCursor />
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />

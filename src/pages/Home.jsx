@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import Spline from '@splinetool/react-spline';
 import { Shield, Zap, Wrench, ArrowRight, Activity, MapPin } from 'lucide-react';
 import Marquee from '../components/Marquee';
 
@@ -260,7 +261,7 @@ export default function Home() {
       {/* CORE CAPABILITIES */}
       <section className="section" style={{ background: 'var(--dark2)', position: 'relative' }}>
         <div className="desktop-only" style={{ position: 'absolute', top: '5%', right: '5%', width: '600px', height: '600px', pointerEvents: 'auto', zIndex: 0, opacity: 0.9 }}>
-          <spline-viewer url="https://prod.spline.design/qTEClmohuTJzMq6S/scene.splinecode"></spline-viewer>
+          <Spline scene="https://prod.spline.design/qTEClmohuTJzMq6S/scene.splinecode" />
         </div>
 
         <div className="container" style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
