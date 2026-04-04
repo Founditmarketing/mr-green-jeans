@@ -250,7 +250,13 @@ button {
   scrollbar-width: none;  /* Firefox */
 }
 
+.desktop-video { display: block; }
+.mobile-video { display: none; }
+
 @media(max-width: 900px) {
+  .desktop-video { display: none !important; }
+  .mobile-video { display: block !important; }
+  
   .mobile-carousel {
     display: flex !important;
     overflow-x: auto !important;

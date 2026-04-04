@@ -42,7 +42,7 @@ export default function Navbar() {
             <img 
               src="https://www.sheltonenergy.com/html/images/imgs/sticky-logo.png" 
               alt="Shelton Energy Solutions Logo" 
-              style={{ height: '45px', objectFit: 'contain' }}
+              style={{ height: '45px', objectFit: 'contain', filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.9)) drop-shadow(0 0 25px rgba(255,255,255,0.5))' }}
             />
           </Link>
 

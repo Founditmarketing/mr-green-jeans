@@ -60,14 +60,19 @@ export default function Home() {
       {/* EXTREME HERO SECTION */}
       <section className="hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
         
-        {/* Video Background */}
-        <div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.4 }}>
-          <video 
-            autoPlay loop muted playsInline 
-            style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.2)' }}
-            src="https://www.sheltonenergy.com/video/sheltonenergysolutions.mp4"
-          />
-        </div>
+        {/* Dual Orientation Videos */}
+        <video 
+          autoPlay loop muted playsInline className="desktop-video"
+          style={{ position: 'absolute', width: '100vw', height: '100%', objectFit: 'cover', opacity: 0.6 }}
+        >
+          <source src="/hero-desktop.mp4" type="video/mp4" />
+        </video>
+        <video 
+          autoPlay loop muted playsInline className="mobile-video"
+          style={{ position: 'absolute', width: '100vw', height: '100%', objectFit: 'cover', opacity: 0.6 }}
+        >
+          <source src="/hero-mobile.mp4" type="video/mp4" />
+        </video>
 
         {/* Pulsing Grid & Overlay */}
         <div className="grid-bg" style={{ zIndex: 1 }}></div>
@@ -98,8 +103,8 @@ export default function Home() {
             style={{ fontFamily: 'Bebas Neue', fontSize: 'clamp(4rem, 9vw, 8.5rem)', color: 'var(--white)', lineHeight: 0.9, letterSpacing: '0.05em', marginBottom: '1.5rem', maxWidth: '1000px', textShadow: '0 10px 30px rgba(0,0,0,0.8)' }}
           >
             POWERING THE <motion.span 
-              animate={{ textShadow: ['0 0 10px rgba(0, 168, 255,0.3)', '0 0 30px rgba(0, 168, 255,0.8), 0 0 60px rgba(0, 168, 255,0.4)', '0 0 10px rgba(0, 168, 255,0.3)'] }}
-              transition={{ repeat: Infinity, duration: 3 }}
+              animate={{ opacity: [0.8, 1, 0.8] }} 
+              transition={{ repeat: Infinity, duration: 2 }}
               style={{ color: 'var(--blue)', display: 'inline-block' }}>GRID</motion.span>
             <span style={{ display: 'block', fontSize: 'clamp(1.2rem, 3vw, 2.8rem)', fontFamily: 'Barlow', fontWeight: '500', color: 'var(--text)', letterSpacing: '0', marginTop: '1rem' }}>
               Electric Utility Transmission & Distribution Systems

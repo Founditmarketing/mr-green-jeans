@@ -25,13 +25,13 @@ export default function MobileActionBar() {
           to="/contact" 
           style={{ 
             flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', 
-            background: 'var(--blue)', color: 'var(--dark)', 
+            background: 'transparent', border: '1px solid var(--blue)', color: 'var(--white)', 
             padding: '0.8rem', borderRadius: '8px', 
             fontFamily: 'Barlow Condensed', fontWeight: 700, letterSpacing: '0.1em', fontSize: '1rem',
-            boxShadow: '0 0 20px rgba(0, 168, 255,0.2)'
+            boxShadow: 'none'
           }}
         >
-          <FileText size={18} /> Get Quote
+          <FileText size={18} color="var(--blue)" /> Get Quote
         </Link>
       </div>
 
