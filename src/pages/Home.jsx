@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Shield, Zap, Wrench, ArrowRight, Activity, MapPin } from 'lucide-react';
 import Marquee from '../components/Marquee';
@@ -24,49 +24,59 @@ function AnimatedCounter({ from, to, suffixClassName, suffix = "" }) {
 
 
 export default function Home() {
-  const [scrollY, setScrollY] = useState(0);
-  
-  // Video Sequencer Logic
-  const desktopVideos = ["/hero1-desktop.mp4", "/hero2-desktop.mp4", "/hero-desktop.mp4"];
-  const mobileVideos = ["/hero1-mobile.mp4", "/hero2-mobile.mp4", "/hero-mobile.mp4"];
-  const [deskIdx, setDeskIdx] = useState(0);
-  const [mobIdx, setMobIdx] = useState(0);
-  const deskRef = useRef(null);
-  const mobRef = useRef(null);
+  const heroRef = useRef(null);
 
-  useEffect(() => {
-    if (deskRef.current) deskRef.current.play().catch(() => {});
-  }, [deskIdx]);
-
-  useEffect(() => {
-    if (mobRef.current) mobRef.current.play().catch(() => {});
-  }, [mobIdx]);
+  // Power Restoration Scroll Physics
+  const { scrollYProgress } = useScroll();
+  // Map scroll 0-15% → blackout overlay fades from 0.75 to 0
+  const blackoutOpacity = useTransform(scrollYProgress, [0, 0.12], [0.75, 0]);
+  // Map scroll 0-15% → background image brightens from 0.3 to 0.7
+  const bgBrightness = useTransform(scrollYProgress, [0, 0.12], [0.3, 0.7]);
+  // Blue surge glow intensity
+  const surgeGlow = useTransform(scrollYProgress, [0.08, 0.14, 0.18], [0, 1, 0]);
 
   return (
     <div style={{ paddingBottom: '0' }}>
       {/* EXTREME HERO SECTION */}
-      <section className="hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
+      <section ref={heroRef} className="hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
         
-        {/* Background Videos */}
-        <video 
-          ref={deskRef}
-          className="desktop-video"
-          src={desktopVideos[deskIdx]} autoPlay muted playsInline 
-          onEnded={() => setDeskIdx((prev) => (prev + 1) % desktopVideos.length)}
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} 
-        />
-        <video 
-          ref={mobRef}
-          className="mobile-video"
-          src={mobileVideos[mobIdx]} autoPlay muted playsInline 
-          onEnded={() => setMobIdx((prev) => (prev + 1) % mobileVideos.length)}
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} 
+        {/* Static Energy Grid Background */}
+        <motion.div 
+          style={{ 
+            position: 'absolute', inset: 0, 
+            backgroundImage: 'url(/hero-bg.png)', 
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center',
+            opacity: bgBrightness,
+          }} 
         />
 
-        {/* Video Overlay Gradient (replaces explicit grids) */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,12,16,0.3) 0%, var(--dark) 100%)', zIndex: 1 }} />
+        {/* Gradient Overlay */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,12,16,0.2) 0%, rgba(10,12,16,0.4) 50%, var(--dark) 100%)', zIndex: 1 }} />
 
-        <div className="container" style={{ paddingTop: '8rem', zIndex: 2 }}>
+        {/* Power Restoration Blackout Layer */}
+        <motion.div 
+          style={{ 
+            position: 'absolute', inset: 0, 
+            background: 'var(--dark)', 
+            opacity: blackoutOpacity, 
+            zIndex: 2, 
+            pointerEvents: 'none' 
+          }} 
+        />
+
+        {/* Blue Surge Flash */}
+        <motion.div 
+          style={{ 
+            position: 'absolute', inset: 0, 
+            background: 'radial-gradient(ellipse at center, rgba(0,168,255,0.15) 0%, transparent 70%)', 
+            opacity: surgeGlow, 
+            zIndex: 2, 
+            pointerEvents: 'none' 
+          }} 
+        />
+
+        <div className="container" style={{ paddingTop: '8rem', zIndex: 3 }}>
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
