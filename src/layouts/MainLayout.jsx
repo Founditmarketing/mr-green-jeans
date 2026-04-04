@@ -1,15 +1,22 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import MobileActionBar from '../components/MobileActionBar';
 
 export default function MainLayout() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'var(--dark)' }}>
       <Navbar />
-      <main style={{ flex: 1 }}>
+      <main style={{ flex: 1, paddingBottom: '70px' }} className="mobile-main">
         <Outlet />
       </main>
       <Footer />
+      <MobileActionBar />
+      <style>{`
+        @media(min-width: 901px) {
+          .mobile-main { padding-bottom: 0 !important; }
+        }
+      `}</style>
     </div>
   );
 }

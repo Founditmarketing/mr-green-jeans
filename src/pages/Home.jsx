@@ -146,7 +146,7 @@ export default function Home() {
       <section className="section" style={{ background: 'var(--dark)', position: 'relative', overflow: 'hidden', padding: '7rem 2rem' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 100%, rgba(0,212,255,0.05) 0%, transparent 60%)', zIndex: 0 }} />
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+          <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
             
             <motion.div 
               whileHover={{ y: -10, borderColor: 'var(--volt)', boxShadow: '0 20px 40px rgba(0,212,255,0.15)' }}
@@ -203,7 +203,7 @@ export default function Home() {
             <p style={{ fontSize: '1.15rem', lineHeight: 1.7 }}>From critical infrastructure construction to emergency storm response, we bring the expertise required to keep power flowing reliably.</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+          <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
             {[
               { title: 'Distribution', icon: <Zap color="var(--volt)" size={32} />, desc: 'Turnkey overhead and underground distribution — new installations, reconductors, rehab work. From backyard pole changeouts to full right-of-way builds.' },
               { title: 'Transmission', icon: <Shield color="var(--volt)" size={32} />, desc: 'High-voltage transmission line construction, maintenance, and emergency repair. Engineered for reliability at scale across critical infrastructure.' },
