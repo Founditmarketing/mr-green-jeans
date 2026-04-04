@@ -1,34 +1,107 @@
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Shield, Zap, Wrench, ArrowRight } from 'lucide-react';
+import Marquee from '../components/Marquee';
+
+function AnimatedCounter({ from, to, suffixClassName, suffix = "" }) {
+  const count = useMotionValue(from);
+  const rounded = useTransform(count, Math.round);
+  const formatted = useTransform(rounded, (v) => v.toLocaleString());
+  const springCount = useSpring(count, { duration: 3000, bounce: 0 });
+
+  useEffect(() => {
+    springCount.set(to);
+  }, [springCount, to]);
+
+  return (
+    <>
+      <motion.span>{formatted}</motion.span>
+      <span className={suffixClassName}>{suffix}</span>
+    </>
+  );
+}
+
+const ParticleSystem = () => {
+  const particles = Array.from({ length: 40 });
+  return (
+    <div style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none', overflow: 'hidden' }}>
+      {particles.map((_, i) => (
+        <motion.div
+          key={i}
+          animate={{
+            y: ['100vh', '-20vh'],
+            opacity: [0, 0.8, 0],
+          }}
+          transition={{
+            duration: 4 + Math.random() * 5,
+            repeat: Infinity,
+            delay: Math.random() * 5,
+            ease: 'linear'
+          }}
+          style={{
+            position: 'absolute',
+            left: `${Math.random() * 100}%`,
+            width: `${2 + Math.random() * 3}px`,
+            height: `${2 + Math.random() * 3}px`,
+            background: Math.random() > 0.5 ? 'var(--volt)' : 'var(--amber)',
+            borderRadius: '50%',
+            boxShadow: '0 0 10px currentColor'
+          }}
+        />
+      ))}
+    </div>
+  );
+};
 
 export default function Home() {
   return (
     <div style={{ paddingBottom: '0' }}>
-      {/* HERO SECTION */}
+      {/* EXTREME HERO SECTION */}
       <section className="hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
-        <div className="grid-bg"></div>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 20% 50%, rgba(0,212,255,0.06) 0%, transparent 50%), radial-gradient(circle at 80% 30%, rgba(245,166,35,0.05) 0%, transparent 60%)', zIndex: 0 }} />
         
-        <div className="container" style={{ paddingTop: '8rem' }}>
+        {/* Video Background */}
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.4 }}>
+          <video 
+            autoPlay loop muted playsInline 
+            style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.2)' }}
+            src="https://www.sheltonenergy.com/video/sheltonenergysolutions.mp4"
+          />
+        </div>
+
+        {/* Pulsing Grid & Overlay */}
+        <div className="grid-bg" style={{ zIndex: 1 }}></div>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,12,16,0.3) 0%, var(--dark) 100%)', zIndex: 1 }} />
+        
+        {/* Sparks */}
+        <ParticleSystem />
+
+        <div className="container" style={{ paddingTop: '8rem', zIndex: 2 }}>
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', padding: '0.5rem 1.2rem', background: 'rgba(245,166,35,0.08)', border: '1px solid rgba(245,166,35,0.25)', borderRadius: '100px', marginBottom: '2rem' }}
+            transition={{ duration: 0.8, delay: 1.5 }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', padding: '0.5rem 1.2rem', background: 'rgba(245,166,35,0.08)', border: '1px solid rgba(245,166,35,0.4)', borderRadius: '100px', marginBottom: '2rem', boxShadow: '0 0 20px rgba(245,166,35,0.2)' }}
           >
-            <div style={{ width: '6px', height: '6px', background: 'var(--amber)', borderRadius: '50%' }}></div>
-            <span style={{ fontFamily: 'Barlow Condensed', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--amber)' }}>Veteran-Owned &bull; Family Driven</span>
+            <motion.div 
+              animate={{ opacity: [0.3, 1, 0.3],scale: [0.9, 1.1, 0.9] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+              style={{ width: '8px', height: '8px', background: 'var(--amber)', borderRadius: '50%', boxShadow: '0 0 10px var(--amber)' }}
+            />
+            <span style={{ fontFamily: 'Barlow Condensed', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--amber)' }}>Veteran-Owned &bull; Family Driven</span>
           </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            style={{ fontFamily: 'Bebas Neue', fontSize: 'clamp(3.5rem, 8vw, 7.5rem)', color: 'var(--white)', lineHeight: 0.95, letterSpacing: '0.05em', marginBottom: '1.5rem', maxWidth: '900px' }}
+            transition={{ duration: 0.8, delay: 1.7 }}
+            style={{ fontFamily: 'Bebas Neue', fontSize: 'clamp(4rem, 9vw, 8.5rem)', color: 'var(--white)', lineHeight: 0.9, letterSpacing: '0.05em', marginBottom: '1.5rem', maxWidth: '1000px', textShadow: '0 10px 30px rgba(0,0,0,0.8)' }}
           >
-            POWERING THE <span style={{ color: 'var(--volt)', textShadow: '0 0 40px rgba(0,212,255,0.3)' }}>GRID</span>
-            <span style={{ display: 'block', fontSize: 'clamp(1rem, 2.5vw, 2.2rem)', fontFamily: 'Barlow', fontWeight: '500', color: 'var(--text)', letterSpacing: '0', marginTop: '1rem' }}>
+            POWERING THE <motion.span 
+              animate={{ textShadow: ['0 0 10px rgba(0,212,255,0.3)', '0 0 30px rgba(0,212,255,0.8), 0 0 60px rgba(0,212,255,0.4)', '0 0 10px rgba(0,212,255,0.3)'] }}
+              transition={{ repeat: Infinity, duration: 3 }}
+              style={{ color: 'var(--volt)', display: 'inline-block' }}>GRID</motion.span>
+            <span style={{ display: 'block', fontSize: 'clamp(1.2rem, 3vw, 2.8rem)', fontFamily: 'Barlow', fontWeight: '500', color: 'var(--text)', letterSpacing: '0', marginTop: '1rem' }}>
               Electric Utility Transmission & Distribution Systems
             </span>
           </motion.h1>
@@ -36,8 +109,8 @@ export default function Home() {
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            style={{ fontSize: '1.15rem', lineHeight: 1.7, color: 'var(--text)', maxWidth: '560px', marginBottom: '2.5rem' }}
+            transition={{ duration: 0.8, delay: 1.9 }}
+            style={{ fontSize: '1.25rem', lineHeight: 1.7, color: 'var(--text)', maxWidth: '600px', marginBottom: '3rem', textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}
           >
             One of the fastest-growing overhead and underground utility contractors in the Gulf South. Safety-first. Mission-ready. Built to perform.
           </motion.p>
@@ -45,48 +118,76 @@ export default function Home() {
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
+            transition={{ duration: 0.8, delay: 2.1 }}
+            style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}
           >
-            <Link to="/services" className="btn btn-volt">Explore Our Services</Link>
-            <Link to="/contact" className="btn btn-outline">Request a Quote</Link>
+            <Link to="/services" className="btn btn-volt" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Explore Our Services</Link>
+            <Link to="/contact" className="btn btn-outline" style={{ fontSize: '1.1rem', padding: '1.2rem 3rem' }}>Request a Quote</Link>
           </motion.div>
         </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.5, duration: 1 }}
+          style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}
+        >
+          <span style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text)' }}>Scroll</span>
+          <motion.div 
+            animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }}
+            style={{ width: '1px', height: '60px', background: 'linear-gradient(to bottom, var(--volt), transparent)' }} 
+          />
+        </motion.div>
       </section>
 
-      {/* STATS BENTO GRID */}
-      <section className="section" style={{ background: 'var(--dark2)', borderTop: '1px solid var(--glass-border)', padding: '6rem 2rem' }}>
+      {/* INFINITE MARQUEE */}
+      <Marquee />
+
+      {/* COUNTING STATS BENTO GRID */}
+      <section className="section" style={{ background: 'var(--dark)', position: 'relative', overflow: 'hidden', padding: '7rem 2rem' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 100%, rgba(0,212,255,0.05) 0%, transparent 60%)', zIndex: 0 }} />
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
             
             <motion.div 
-              whileHover={{ y: -5, borderColor: 'rgba(0,212,255,0.3)' }}
-              style={{ background: 'var(--dark)', border: '1px solid var(--glass-border)', borderRadius: '12px', padding: '3rem 2rem', textAlign: 'center', transition: 'all 0.4s' }}
+              whileHover={{ y: -10, borderColor: 'var(--volt)', boxShadow: '0 20px 40px rgba(0,212,255,0.15)' }}
+              style={{ background: 'var(--dark2)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '4rem 2rem', textAlign: 'center', transition: 'all 0.4s', position: 'relative', overflow: 'hidden' }}
             >
-              <div style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', fontFamily: 'Bebas Neue', color: 'var(--volt)', lineHeight: 1, marginBottom: '0.5rem' }}>
-                1000<span style={{ color: 'var(--amber)', fontSize: '0.6em' }}>+</span>
-              </div>
-              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Projects Completed</div>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--volt), transparent)' }}></div>
+              <motion.div 
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }}
+                style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontFamily: 'Bebas Neue', color: 'var(--volt)', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px rgba(0,212,255,0.3)' }}
+              >
+                <AnimatedCounter from={0} to={1000} suffix="+" suffixClassName="amber-plus" />
+              </motion.div>
+              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.95rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Projects Completed</div>
             </motion.div>
 
             <motion.div 
-              whileHover={{ y: -5, borderColor: 'rgba(0,212,255,0.3)' }}
-              style={{ background: 'var(--dark)', border: '1px solid var(--glass-border)', borderRadius: '12px', padding: '3rem 2rem', textAlign: 'center', transition: 'all 0.4s' }}
+              whileHover={{ y: -10, borderColor: 'var(--volt)', boxShadow: '0 20px 40px rgba(0,212,255,0.15)' }}
+              style={{ background: 'var(--dark2)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '4rem 2rem', textAlign: 'center', transition: 'all 0.4s', position: 'relative', overflow: 'hidden' }}
             >
-              <div style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', fontFamily: 'Bebas Neue', color: 'var(--volt)', lineHeight: 1, marginBottom: '0.5rem' }}>
-                41,200<span style={{ color: 'var(--amber)', fontSize: '0.6em' }}>+</span>
-              </div>
-              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Hours Without Incident</div>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--volt), transparent)' }}></div>
+              <motion.div 
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }}
+                style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontFamily: 'Bebas Neue', color: 'var(--volt)', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px rgba(0,212,255,0.3)' }}
+              >
+                <AnimatedCounter from={0} to={41200} suffix="+" suffixClassName="amber-plus" />
+              </motion.div>
+              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.95rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Hours Without Incident</div>
             </motion.div>
 
             <motion.div 
-              whileHover={{ y: -5, borderColor: 'rgba(0,212,255,0.3)' }}
-              style={{ background: 'var(--dark)', border: '1px solid var(--glass-border)', borderRadius: '12px', padding: '3rem 2rem', textAlign: 'center', transition: 'all 0.4s' }}
+              whileHover={{ y: -10, borderColor: 'var(--volt)', boxShadow: '0 20px 40px rgba(0,212,255,0.15)' }}
+              style={{ background: 'var(--dark2)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '4rem 2rem', textAlign: 'center', transition: 'all 0.4s', position: 'relative', overflow: 'hidden' }}
             >
-              <div style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', fontFamily: 'Bebas Neue', color: 'var(--volt)', lineHeight: 1, marginBottom: '0.5rem' }}>
-                100<span style={{ color: 'var(--amber)', fontSize: '0.6em' }}>+</span>
-              </div>
-              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Deployable Service Crews</div>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--volt), transparent)' }}></div>
+              <motion.div 
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }}
+                style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontFamily: 'Bebas Neue', color: 'var(--volt)', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px rgba(0,212,255,0.3)' }}
+              >
+                <AnimatedCounter from={0} to={100} suffix="+" suffixClassName="amber-plus" />
+              </motion.div>
+              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.95rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Deployable Service Crews</div>
             </motion.div>
 
           </div>
@@ -94,54 +195,51 @@ export default function Home() {
       </section>
 
       {/* CORE CAPABILITIES */}
-      <section className="section">
+      <section className="section" style={{ background: 'var(--dark2)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 4rem' }}>
+          <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 5rem' }}>
             <div className="section-label">Capabilities</div>
-            <h2 className="section-title">FULL-SPECTRUM <span style={{ color: 'var(--amber)' }}>ENERGY SERVICES</span></h2>
-            <p style={{ fontSize: '1.05rem', lineHeight: 1.7 }}>From critical infrastructure construction to emergency storm response, we bring the expertise required to keep power flowing reliably.</p>
+            <h2 className="section-title">FULL-SPECTRUM <span style={{ color: 'var(--amber)', textShadow: '0 0 20px rgba(245,166,35,0.4)' }}>ENERGY SERVICES</span></h2>
+            <p style={{ fontSize: '1.15rem', lineHeight: 1.7 }}>From critical infrastructure construction to emergency storm response, we bring the expertise required to keep power flowing reliably.</p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-            
-            {/* Capability Card */}
             {[
-              { title: 'Distribution', icon: <Zap color="var(--volt)" size={28} />, desc: 'Turnkey overhead and underground distribution — new installations, reconductors, rehab work. From backyard pole changeouts to full right-of-way builds.' },
-              { title: 'Transmission', icon: <Shield color="var(--volt)" size={28} />, desc: 'High-voltage transmission line construction, maintenance, and emergency repair. Engineered for reliability at scale across critical infrastructure.' },
-              { title: 'Substation', icon: <Wrench color="var(--volt)" size={28} />, desc: 'Complete substation construction, upgrades, and maintenance. From foundations to energization — we deliver reliable power conversion.' }
+              { title: 'Distribution', icon: <Zap color="var(--volt)" size={32} />, desc: 'Turnkey overhead and underground distribution — new installations, reconductors, rehab work. From backyard pole changeouts to full right-of-way builds.' },
+              { title: 'Transmission', icon: <Shield color="var(--volt)" size={32} />, desc: 'High-voltage transmission line construction, maintenance, and emergency repair. Engineered for reliability at scale across critical infrastructure.' },
+              { title: 'Substation', icon: <Wrench color="var(--volt)" size={32} />, desc: 'Complete substation construction, upgrades, and maintenance. From foundations to energization — we deliver reliable power conversion.' }
             ].map((srv, idx) => (
               <motion.div 
                 key={srv.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-50px' }}
                 transition={{ delay: idx * 0.2, duration: 0.6 }}
-                whileHover={{ y: -8, borderColor: 'rgba(0,212,255,0.4)' }}
-                style={{ background: 'var(--dark2)', border: '1px solid var(--glass-border)', borderRadius: '12px', padding: '2.5rem 2rem', position: 'relative', cursor: 'pointer', overflow: 'hidden' }}
+                whileHover={{ y: -10, borderColor: 'var(--volt)', boxShadow: '0 20px 50px rgba(0,212,255,0.15)' }}
+                style={{ background: 'var(--dark)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '3.5rem 2.5rem', position: 'relative', cursor: 'pointer', overflow: 'hidden', transition: 'all 0.4s' }}
               >
-                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'linear-gradient(90deg, var(--volt), var(--amber))', transform: 'scaleX(0)', transformOrigin: 'left', transition: 'transform 0.5s' }} className="hover-line" />
-                <div style={{ width: '60px', height: '60px', background: 'rgba(0,212,255,0.06)', border: '1px solid rgba(0,212,255,0.12)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--volt), var(--amber))', transform: 'scaleX(0)', transformOrigin: 'left', transition: 'transform 0.5s' }} className="hover-line" />
+                <div style={{ width: '70px', height: '70px', background: 'rgba(0,212,255,0.06)', border: '1px solid rgba(0,212,255,0.2)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '2rem', boxShadow: '0 0 20px rgba(0,212,255,0.1)' }} className="icon-box">
                   {srv.icon}
                 </div>
-                <h3 style={{ fontFamily: 'Bebas Neue', fontSize: '1.8rem', color: 'var(--white)', marginBottom: '1rem', letterSpacing: '0.05em' }}>{srv.title}</h3>
-                <p style={{ fontSize: '0.95rem', lineHeight: 1.7, color: 'var(--text)', marginBottom: '1.5rem' }}>{srv.desc}</p>
-                <Link to="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'Barlow Condensed', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--volt)' }}>
-                  Learn More <ArrowRight size={16} />
+                <h3 style={{ fontFamily: 'Bebas Neue', fontSize: '2rem', color: 'var(--white)', marginBottom: '1rem', letterSpacing: '0.05em' }}>{srv.title}</h3>
+                <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--text)', marginBottom: '2rem' }}>{srv.desc}</p>
+                <Link to="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'Barlow Condensed', fontSize: '1rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--volt)' }}>
+                  Learn More <ArrowRight size={18} />
                 </Link>
                 <style>{`
                   div[style*="cursor: pointer"]:hover .hover-line { transform: scaleX(1) !important; }
+                  div[style*="cursor: pointer"]:hover .icon-box { background: rgba(0,212,255,0.15) !important; border-color: var(--volt) !important; box-shadow: 0 0 30px rgba(0,212,255,0.3) !important; }
                 `}</style>
               </motion.div>
             ))}
-
-          </div>
-          
-          <div style={{ textAlign: 'center', marginTop: '4rem' }}>
-            <Link to="/services" className="btn btn-outline">View All Services</Link>
           </div>
         </div>
       </section>
 
+      <style>{`
+        .amber-plus { font-size: 0.6em; color: var(--amber); }
+      `}</style>
     </div>
   );
 }

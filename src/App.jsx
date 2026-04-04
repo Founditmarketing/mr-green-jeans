@@ -7,20 +7,27 @@ import Safety from './pages/Safety';
 import Careers from './pages/Careers';
 import Contact from './pages/Contact';
 
+import CustomCursor from './components/CustomCursor';
+import Preloader from './components/Preloader';
+
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="services/*" element={<Services />} />
-          <Route path="safety" element={<Safety />} />
-          <Route path="careers" element={<Careers />} />
-          <Route path="contact" element={<Contact />} />
-        </Route>
-      </Routes>
-    </Router>
+    <>
+      <Preloader />
+      <CustomCursor />
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="services/*" element={<Services />} />
+            <Route path="safety" element={<Safety />} />
+            <Route path="careers" element={<Careers />} />
+            <Route path="contact" element={<Contact />} />
+          </Route>
+        </Routes>
+      </Router>
+    </>
   );
 }
 
