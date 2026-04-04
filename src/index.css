@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap');
 
 :root {
-  --volt: #00d4ff;
-  --amber: #f5a623;
-  --amber-deep: #e8910a;
-  --red: #CC0000;
+  --volt: #00E5FF;
+  --amber: #FF7B00;
+  --amber-deep: #E65C00;
+  --red: #D90000;
   
-  --dark: #0a0c10;
-  --dark2: #0f1218;
-  --dark3: #151a22;
-  --steel: #1c2230;
-  --slate: #2a3040;
+  --dark: #05070B;
+  --dark2: #090C14;
+  --dark3: #0F1521;
+  --steel: #162032;
+  --slate: #1F2A40;
   
   --text: #c8cdd6;
   --text-light: #e8ecf2;
   --white: #ffffff;
-  --glass: rgba(10, 12, 16, 0.7);
-  --glass-border: rgba(0, 212, 255, 0.1);
+  --glass: rgba(5, 7, 11, 0.8);
+  --glass-border: rgba(0, 229, 255, 0.12);
 }
 
 *, *::before, *::after {
