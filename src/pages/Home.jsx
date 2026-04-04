@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import Spline from '@splinetool/react-spline';
 import { Shield, Zap, Wrench, ArrowRight, Activity, MapPin } from 'lucide-react';
 import Marquee from '../components/Marquee';
 
@@ -259,12 +258,8 @@ export default function Home() {
       </section>
 
       {/* CORE CAPABILITIES */}
-      <section className="section" style={{ background: 'var(--dark2)', position: 'relative' }}>
-        <div className="spline-container">
-          <Spline scene="https://prod.spline.design/qTEClmohuTJzMq6S/scene.splinecode" />
-        </div>
-
-        <div className="container" style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
+      <section className="section" style={{ background: 'var(--dark2)' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'left', maxWidth: '700px', margin: '0 0 5rem' }}>
             <div className="section-label">Capabilities</div>
             <h2 className="section-title">FULL-SPECTRUM <span style={{ color: 'var(--red)', textShadow: '0 0 20px rgba(230, 30, 37,0.4)' }}>ENERGY SERVICES</span></h2>
