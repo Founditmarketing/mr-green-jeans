@@ -1,9 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Shield, Zap, Wrench, ArrowRight, Activity, MapPin } from 'lucide-react';
 import Marquee from '../components/Marquee';
-import ElectricField from '../components/ElectricField';
 
 function AnimatedCounter({ from, to, suffixClassName, suffix = "" }) {
   const count = useMotionValue(from);
@@ -30,13 +29,22 @@ export default function Home() {
   return (
     <div style={{ paddingBottom: '0' }}>
       {/* EXTREME HERO SECTION */}
-      <section ref={heroRef} className="hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', background: '#000' }}>
+      <section ref={heroRef} className="hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
         
-        {/* Procedural Electric Particle Field */}
-        <ElectricField />
+        {/* Background Video */}
+        <video 
+          className="desktop-video"
+          src="/hero-desktop.mp4" autoPlay loop muted playsInline 
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} 
+        />
+        <video 
+          className="mobile-video"
+          src="/hero-mobile.mp4" autoPlay loop muted playsInline 
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} 
+        />
 
-        {/* Bottom fade only — let the canvas breathe */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 0%, transparent 60%, var(--dark) 100%)', zIndex: 1, pointerEvents: 'none' }} />
+        {/* Bottom gradient fade */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,12,16,0.3) 0%, var(--dark) 100%)', zIndex: 1 }} />
 
         <div className="container" style={{ paddingTop: 'clamp(7rem, 15vh, 10rem)', zIndex: 3, position: 'relative' }}>
           <motion.div 
