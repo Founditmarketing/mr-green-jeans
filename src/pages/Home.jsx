@@ -213,7 +213,7 @@ export default function Home() {
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 {[
-                  { status: 'ACTIVE', color: 'var(--blue)', loc: 'Baton Rouge, LA', desc: '138kV Reconductor Staging' },
+                  { status: 'HQ: ACTIVE', color: 'var(--blue)', loc: 'Alexandria, LA', desc: 'Central Logistics & Staging' },
                   { status: 'WARNING', color: 'var(--red)', loc: 'Houston, TX', desc: 'Predictive Hurricane Staging' },
                   { status: 'ACTIVE', color: 'var(--blue)', loc: 'Mobile, AL', desc: 'Underground Vault Rehab' }
                 ].map((item, i) => (
@@ -259,13 +259,13 @@ export default function Home() {
                     <div style={{ marginTop: '15px', fontFamily: 'Barlow Condensed', color: 'var(--white)', fontWeight: 600, letterSpacing: '0.1em', background: 'rgba(230,30,37,0.2)', padding: '4px 10px', borderRadius: '4px', border: '1px solid var(--red)', backdropFilter: 'blur(4px)', whiteSpace: 'nowrap' }}>HOUSTON: SEVERE</div>
                   </div>
 
-                  {/* Baton Rouge Node (55%, 40%) */}
-                  <div style={{ position: 'absolute', top: '40%', left: '55%', zIndex: 2, transform: 'translate(-50%, -50%)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  {/* Alexandria HQ Node (50%, 35%) */}
+                  <div style={{ position: 'absolute', top: '35%', left: '50%', zIndex: 2, transform: 'translate(-50%, -50%)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <div style={{ position: 'relative' }}>
                       <motion.div animate={{ scale: [1, 2, 1], opacity: [0.5, 0, 0.5] }} transition={{ repeat: Infinity, duration: 3, delay: 1 }} style={{ position: 'absolute', inset: -10, background: 'var(--blue)', borderRadius: '50%', filter: 'blur(4px)' }} />
-                      <div style={{ width: '12px', height: '12px', background: 'var(--white)', borderRadius: '50%', boxShadow: '0 0 10px white, 0 0 20px var(--blue)', position: 'relative', zIndex: 2 }} />
+                      <div style={{ width: '14px', height: '14px', background: 'var(--white)', borderRadius: '50%', boxShadow: '0 0 10px white, 0 0 20px var(--blue)', position: 'relative', zIndex: 2 }} />
                     </div>
-                    <div style={{ marginTop: '15px', fontFamily: 'Barlow Condensed', color: 'var(--white)', fontWeight: 600, letterSpacing: '0.1em', background: 'rgba(0,168,255,0.2)', padding: '4px 10px', borderRadius: '4px', border: '1px solid var(--blue)', backdropFilter: 'blur(4px)', whiteSpace: 'nowrap' }}>BATON ROUGE: STAGED</div>
+                    <div style={{ marginTop: '15px', fontFamily: 'Barlow Condensed', color: 'var(--blue)', fontWeight: 600, letterSpacing: '0.1em', background: 'rgba(0,168,255,0.2)', padding: '4px 10px', borderRadius: '4px', border: '1px solid var(--blue)', backdropFilter: 'blur(4px)', whiteSpace: 'nowrap' }}>ALEXANDRIA HQ: STAGED</div>
                   </div>
 
                   {/* Mobile AL Node (75%, 35%) */}
