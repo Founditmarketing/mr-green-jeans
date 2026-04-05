@@ -171,14 +171,13 @@ export default function Home() {
       </section>
 
       {/* FULL-BLEED CREW PHOTO BREAK */}
-      <section style={{ position: 'relative', height: 'clamp(250px, 35vw, 400px)', overflow: 'hidden' }}>
+      <section style={{ position: 'relative', height: 'clamp(300px, 50vw, 600px)', overflow: 'hidden' }}>
         <img 
           src="/crew-banner.png" 
           alt="Shelton Energy crew working in the field" 
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', display: 'block' }} 
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }} 
         />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, var(--dark) 0%, transparent 20%, transparent 80%, var(--dark) 100%)' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, var(--dark) 0%, transparent 30%, transparent 70%, var(--dark) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, var(--dark) 0%, transparent 15%, transparent 85%, var(--dark) 100%)' }} />
       </section>
 
       {/* OPERATIONS COMMAND CENTER MAP */}
