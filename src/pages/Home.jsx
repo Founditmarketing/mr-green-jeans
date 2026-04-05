@@ -38,7 +38,7 @@ export default function Home() {
         {/* Background Video */}
         <video 
           className="desktop-video"
-          src="/hero-desktop.mp4" autoPlay loop muted playsInline 
+          src="/hero-desktop-new.mp4" autoPlay loop muted playsInline 
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} 
         />
         <video 
