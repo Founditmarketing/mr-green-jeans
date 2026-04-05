@@ -173,11 +173,16 @@ export default function Home() {
       {/* FULL-BLEED CREW VIDEO BREAK */}
       <section style={{ position: 'relative', height: 'clamp(300px, 50vw, 600px)', overflow: 'hidden' }}>
         <video 
+          ref={(el) => { if (el) el.play().catch(() => {}); }}
           src="/crew-video.mp4" 
           autoPlay loop muted playsInline
+          disableRemotePlayback
+          poster="/crew-banner.png"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }} 
         />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, var(--dark) 0%, transparent 15%, transparent 85%, var(--dark) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, var(--dark) 0%, transparent 15%, transparent 85%, var(--dark) 100%)', zIndex: 1, pointerEvents: 'none' }} />
+        {/* Block any native play button overlay */}
+        <div style={{ position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none' }} />
       </section>
 
       {/* OPERATIONS COMMAND CENTER MAP */}
