@@ -308,14 +308,52 @@ button {
     gap: 1.5rem !important;
     padding-bottom: 2rem !important;
     grid-template-columns: none !important;
-    /* Allow edge-to-edge bleed in container by using negative margins */
     margin-left: -2rem;
     margin-right: -2rem;
     padding-left: 2rem !important;
     padding-right: 2rem !important;
+    position: relative;
   }
   .mobile-carousel > div {
     min-width: 85vw !important;
     scroll-snap-align: center;
+  }
+
+  /* Swipe hint wrapper */
+  .carousel-wrapper {
+    position: relative;
+  }
+  .carousel-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: calc(100% - 2rem);
+    background: linear-gradient(90deg, transparent, var(--dark));
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .swipe-hint {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text);
+    opacity: 0.6;
+  }
+  .swipe-hint svg {
+    animation: swipe-bounce 1.5s ease-in-out infinite;
+  }
+  @keyframes swipe-bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(6px); }
   }
 }

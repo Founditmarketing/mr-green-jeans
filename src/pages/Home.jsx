@@ -4,6 +4,16 @@ import { Link } from 'react-router-dom';
 import { Shield, Zap, Wrench, ArrowRight, Activity, MapPin } from 'lucide-react';
 import Marquee from '../components/Marquee';
 import OpsMap from '../components/OpsMap';
+import { ChevronRight } from 'lucide-react';
+
+function SwipeHint() {
+  return (
+    <div className="swipe-hint" style={{ display: 'none' }}>
+      <span>Swipe</span>
+      <ChevronRight size={14} />
+    </div>
+  );
+}
 
 function AnimatedCounter({ from, to, suffix = "", suffixClassName }) {
   const ref = useRef(null);
@@ -122,6 +132,7 @@ export default function Home() {
       <section className="section" style={{ background: 'linear-gradient(180deg, #0d1520 0%, #0a1628 100%)', position: 'relative', overflow: 'hidden', padding: '7rem 2rem' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 100%, rgba(0, 168, 255,0.05) 0%, transparent 60%)', zIndex: 0 }} />
         <div className="container">
+          <div className="carousel-wrapper">
           <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
             
             <motion.div 
@@ -166,6 +177,8 @@ export default function Home() {
               <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.95rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Fully Equipped Crews</div>
             </motion.div>
 
+          </div>
+          <SwipeHint />
           </div>
         </div>
       </section>
@@ -253,6 +266,7 @@ export default function Home() {
             <p style={{ fontSize: '1.15rem', lineHeight: 1.7 }}>From critical infrastructure construction to emergency storm response, we bring the expertise required to keep power flowing reliably.</p>
           </div>
 
+          <div className="carousel-wrapper">
           <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', pointerEvents: 'auto' }}>
             {[
               { title: 'Distribution', icon: <Zap color="var(--blue)" size={32} />, desc: 'Turnkey overhead and underground distribution — new installations, reconductors, rehab work. From backyard pole changeouts to full right-of-way builds.' },
@@ -283,6 +297,8 @@ export default function Home() {
                 `}</style>
               </motion.div>
             ))}
+          </div>
+          <SwipeHint />
           </div>
         </div>
       </section>
