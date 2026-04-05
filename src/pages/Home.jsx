@@ -53,7 +53,7 @@ export default function Home() {
         />
         <video 
           className="mobile-video"
-          src="/hero-mobile.mp4" autoPlay loop muted playsInline 
+          src="/hero-mobile-v2.mp4" autoPlay loop muted playsInline 
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} 
         />
 
