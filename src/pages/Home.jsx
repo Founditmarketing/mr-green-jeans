@@ -170,6 +170,17 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FULL-BLEED CREW PHOTO BREAK */}
+      <section style={{ position: 'relative', height: 'clamp(250px, 35vw, 400px)', overflow: 'hidden' }}>
+        <img 
+          src="/crew-banner.png" 
+          alt="Shelton Energy crew working in the field" 
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', display: 'block' }} 
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, var(--dark) 0%, transparent 20%, transparent 80%, var(--dark) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, var(--dark) 0%, transparent 30%, transparent 70%, var(--dark) 100%)' }} />
+      </section>
+
       {/* OPERATIONS COMMAND CENTER MAP */}
       <section className="section" style={{ background: 'var(--dark)', borderTop: '1px solid var(--glass-border)', padding: '5rem 2rem' }}>
         <div className="container">
@@ -209,7 +220,17 @@ export default function Home() {
       </section>
 
       {/* CORE CAPABILITIES */}
-      <section className="section" style={{ background: 'var(--dark2)' }}>
+      <section className="section" style={{ background: 'var(--dark2)', position: 'relative', overflow: 'hidden' }}>
+        {/* Lineman Cutout — Desktop Only */}
+        <motion.img 
+          className="desktop-only"
+          src="/lineman.png" 
+          alt="Professional lineman"
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 0.15, x: 0 }}
+          viewport={{ once: true }}
+          style={{ position: 'absolute', right: '-2%', bottom: 0, height: '90%', objectFit: 'contain', zIndex: 0, pointerEvents: 'none', filter: 'brightness(0.8)' }}
+        />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'left', maxWidth: '700px', margin: '0 0 5rem' }}>
             <div className="section-label">Capabilities</div>
@@ -251,11 +272,45 @@ export default function Home() {
         </div>
       </section>
 
+      {/* THE TEAM BEHIND THE GRID */}
+      <section className="section" style={{ background: 'var(--dark)', padding: '7rem 2rem' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 4rem' }}>
+            <div className="section-label">Our People</div>
+            <h2 className="section-title">THE TEAM BEHIND <span style={{ color: 'var(--blue)' }}>THE GRID</span></h2>
+            <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: 'var(--text)' }}>Every mile of wire built and every storm restored starts with our people. Meet the leaders who keep the lights on.</p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2.5rem', maxWidth: '900px', margin: '0 auto' }}>
+            {[
+              { img: '/team-supervisor.png', name: 'Field Operations', role: 'Supervisors & Foremen', desc: 'Veterans with decades of storm response and grid construction experience leading every crew.' },
+              { img: '/team-dispatcher.png', name: 'Operations Center', role: 'Dispatch & Logistics', desc: 'Our 24/7 command center coordinates crews, equipment, and real-time weather intelligence.' },
+              { img: '/team-pm.png', name: 'Project Management', role: 'Engineering & Planning', desc: 'From blueprint to energization — our PMs ensure every project delivers on time and on budget.' },
+            ].map((person, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.15, duration: 0.5 }}
+                style={{ textAlign: 'center' }}
+              >
+                <div style={{ width: '180px', height: '180px', borderRadius: '50%', overflow: 'hidden', margin: '0 auto 1.5rem', border: '3px solid var(--glass-border)', boxShadow: '0 0 30px rgba(0,168,255,0.1)' }}>
+                  <img src={person.img} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+                </div>
+                <h3 style={{ fontFamily: 'Bebas Neue', fontSize: '1.6rem', color: 'var(--white)', marginBottom: '0.3rem', letterSpacing: '0.05em' }}>{person.name}</h3>
+                <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: '1rem' }}>{person.role}</div>
+                <p style={{ fontSize: '0.95rem', lineHeight: 1.6, color: 'var(--text)' }}>{person.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <style>{`
         .amber-plus { font-size: 0.6em; color: var(--red); }
         @media(max-width: 900px) {
           .ops-layout { grid-template-columns: 1fr !important; gap: 2rem !important; }
-          .radar-map-container { display: none !important; }
         }
       `}</style>
     </div>
