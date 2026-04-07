@@ -2,80 +2,53 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
-  const [isHovering, setIsHovering] = useState(false);
+  const [pos, setPos] = useState({ x: -100, y: -100 });
+  const [hovering, setHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Only run on non-touch devices
-    if ('ontouchstart' in window) return;
-
-    const updateMousePosition = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    const handleMouseOver = (e) => {
-      const target = e.target;
-      if (
-        target.tagName.toLowerCase() === 'a' ||
-        target.tagName.toLowerCase() === 'button' ||
-        target.closest('a') ||
-        target.closest('button') ||
-        target.classList.contains('interactive')
-      ) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
-      }
-    };
-
-    window.addEventListener('mousemove', updateMousePosition);
-    window.addEventListener('mouseover', handleMouseOver);
-
-    return () => {
-      window.removeEventListener('mousemove', updateMousePosition);
-      window.removeEventListener('mouseover', handleMouseOver);
-    };
+    const checkMobile = () => setIsMobile(window.matchMedia('(pointer: coarse)').matches);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  if ('ontouchstart' in window) return null;
+  useEffect(() => {
+    if (isMobile) return;
+    const move = (e) => setPos({ x: e.clientX, y: e.clientY });
+    const addHover = () => setHovering(true);
+    const removeHover = () => setHovering(false);
+
+    window.addEventListener('mousemove', move);
+    const targets = document.querySelectorAll('a, button, .bento-card');
+    targets.forEach(t => { t.addEventListener('mouseenter', addHover); t.addEventListener('mouseleave', removeHover); });
+
+    return () => {
+      window.removeEventListener('mousemove', move);
+      targets.forEach(t => { t.removeEventListener('mouseenter', addHover); t.removeEventListener('mouseleave', removeHover); });
+    };
+  }, [isMobile]);
+
+  if (isMobile) return null;
 
   return (
-    <>
-      <motion.div
-        className="cursor-dot"
-        animate={{
-          x: mousePosition.x - 4,
-          y: mousePosition.y - 4,
-          scale: isHovering ? 1.5 : 1,
-          backgroundColor: isHovering ? 'var(--red)' : 'var(--blue)'
-        }}
-        transition={{ type: 'tween', ease: 'backOut', duration: 0.1 }}
-        style={{
-          position: 'fixed', top: 0, left: 0, width: '8px', height: '8px',
-          borderRadius: '50%', pointerEvents: 'none', zIndex: 9999,
-          mixBlendMode: 'screen', boxShadow: '0 0 10px var(--blue)'
-        }}
-      />
-      <motion.div
-        className="cursor-ring"
-        animate={{
-          x: mousePosition.x - (isHovering ? 30 : 20),
-          y: mousePosition.y - (isHovering ? 30 : 20),
-          width: isHovering ? 60 : 40,
-          height: isHovering ? 60 : 40,
-          borderColor: isHovering ? 'var(--red)' : 'var(--blue)',
-        }}
-        transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.5 }}
-        style={{
-          position: 'fixed', top: 0, left: 0, border: '1.5px solid var(--blue)',
-          borderRadius: '50%', pointerEvents: 'none', zIndex: 9998,
-          opacity: 0.5, boxShadow: isHovering ? '0 0 20px rgba(230, 30, 37, 0.5)' : 'inset 0 0 10px rgba(0, 168, 255, 0.2)'
-        }}
-      />
-      <style>{`
-        body { cursor: none; }
-        a, button, select, input, textarea { cursor: none; }
-      `}</style>
-    </>
+    <motion.div
+      animate={{ x: pos.x - (hovering ? 20 : 6), y: pos.y - (hovering ? 20 : 6), scale: hovering ? 1 : 1 }}
+      transition={{ type: 'spring', damping: 30, stiffness: 400 }}
+      style={{
+        position: 'fixed',
+        top: 0, left: 0,
+        width: hovering ? 40 : 12,
+        height: hovering ? 40 : 12,
+        borderRadius: '50%',
+        background: hovering ? 'transparent' : 'var(--gold)',
+        border: hovering ? '2px solid var(--gold)' : 'none',
+        opacity: hovering ? 0.5 : 0.6,
+        pointerEvents: 'none',
+        zIndex: 10000,
+        mixBlendMode: 'difference',
+        transition: 'width 0.3s, height 0.3s, background 0.3s, border 0.3s, opacity 0.3s',
+      }}
+    />
   );
 }

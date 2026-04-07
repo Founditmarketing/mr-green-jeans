@@ -1,90 +1,84 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone } from 'lucide-react';
+import { Phone, TreePine } from 'lucide-react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => { setMobileMenuOpen(false); }, [location]);
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location]);
 
-  const navItems = ['Home', 'About', 'Services', 'Safety', 'Careers', 'Contact'];
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
+  const links = [
+    { to: '/', label: 'Home' },
+    { to: '/about', label: 'About' },
+    { to: '/services', label: 'Services' },
+    { to: '/contact', label: 'Contact' },
+  ];
 
   return (
     <>
-      <header style={{
-        backgroundColor: scrolled ? 'rgba(0,0,0,0.92)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(240,240,250,0.06)' : 'none',
-        padding: scrolled ? '0.7rem 2rem' : '1.2rem 2rem',
-        position: 'fixed', width: '100%', zIndex: 1000, transition: 'all 0.3s ease'
-      }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '1300px', margin: '0 auto' }}>
-          <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
-            <img src="https://www.sheltonenergy.com/html/images/imgs/sticky-logo.png" alt="Shelton Energy Solutions" style={{ height: '40px', objectFit: 'contain' }} />
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <div className="nav-inner">
+          <Link to="/" className="logo">
+            <TreePine size={24} color="var(--gold)" />
+            <span>Mr. Green <span className="logo-accent">Jeans</span></span>
           </Link>
 
-          <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-            <div style={{ display: 'flex', gap: '1.5rem' }}>
-              {navItems.map((item) => {
-                const path = item === 'Home' ? '/' : `/${item.toLowerCase()}`;
-                const isActive = location.pathname === path;
-                return (
-                  <Link key={item} to={path}
-                    style={{ fontFamily: 'Barlow Condensed', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: isActive ? 'var(--red)' : 'rgba(240,240,250,0.6)', transition: 'color 0.2s' }}
-                    onMouseOver={(e) => e.currentTarget.style.color = 'var(--red)'}
-                    onMouseOut={(e) => e.currentTarget.style.color = isActive ? 'var(--red)' : 'rgba(240,240,250,0.6)'}>
-                    {item}
-                  </Link>
-                );
-              })}
-            </div>
-            <a href="tel:3184435894" className="btn btn-red" style={{ padding: '0.6rem 1.2rem', fontSize: '0.75rem', borderRadius: 0 }}>
-              <Phone size={13} style={{ marginRight: '6px' }} /> 318.443.5894
-            </a>
-          </nav>
-
-          <div className="mobile-toggle" style={{ display: 'none', alignItems: 'center' }}>
-            <button onClick={() => setMobileMenuOpen(true)} style={{ background: 'none', border: 'none', color: '#f0f0fa', cursor: 'pointer', padding: '10px' }}>
-              <Menu size={26} />
-            </button>
+          <div className="desktop-nav">
+            {links.map(link => (
+              <Link key={link.to} to={link.to}
+                style={{ color: location.pathname === link.to ? 'var(--gold)' : undefined }}>
+                {link.label}
+              </Link>
+            ))}
           </div>
-        </div>
-      </header>
 
-      <style>{`@media (max-width: 900px) { .desktop-nav { display: none !important; } .mobile-toggle { display: flex !important; } }`}</style>
+          <a href="tel:3187302800" className="nav-cta nav-cta-desktop desktop-only">
+            <Phone size={14} />
+            (318) 730-2800
+          </a>
+
+          <button className={`mobile-toggle ${mobileOpen ? 'open' : ''}`}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu">
+            <span /><span /><span />
+          </button>
+        </div>
+      </nav>
 
       <AnimatePresence>
-        {mobileMenuOpen && (
-          <>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.8)', zIndex: 1001 }} onClick={() => setMobileMenuOpen(false)} />
-            <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ ease: 'circOut', duration: 0.3 }}
-              style={{ position: 'fixed', top: 0, right: 0, bottom: 0, width: '85vw', maxWidth: '320px', zIndex: 1002, background: '#0a0a0a', borderLeft: '1px solid rgba(240,240,250,0.06)', padding: '2rem', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
-                <span style={{ fontFamily: 'Barlow Condensed', color: 'var(--red)', letterSpacing: '0.2em', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase' }}>Menu</span>
-                <button onClick={() => setMobileMenuOpen(false)} style={{ background: 'none', border: '1px solid rgba(240,240,250,0.1)', color: '#f0f0fa', width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}><X size={20} /></button>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>
-                {navItems.map((item) => (
-                  <Link key={item} to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                    style={{ fontFamily: 'Inter', fontSize: '1.1rem', fontWeight: 500, color: '#f0f0fa', padding: '1rem 0', borderBottom: '1px solid rgba(240,240,250,0.06)' }}>
-                    {item}
-                  </Link>
-                ))}
-              </div>
-              <a href="tel:3184435894" className="btn btn-red" style={{ width: '100%', justifyContent: 'center', marginTop: '2rem' }}>
-                <Phone size={16} style={{ marginRight: '8px' }} /> 318.443.5894
-              </a>
-            </motion.div>
-          </>
+        {mobileOpen && (
+          <motion.div className="mobile-nav-overlay"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}>
+            {links.map((link, i) => (
+              <motion.div key={link.to}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.08 }}>
+                <Link to={link.to} onClick={() => setMobileOpen(false)}>{link.label}</Link>
+              </motion.div>
+            ))}
+            <motion.a href="tel:3187302800" className="btn btn-gold" style={{ marginTop: '1rem' }}
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+              <Phone size={16} /> Call Now
+            </motion.a>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

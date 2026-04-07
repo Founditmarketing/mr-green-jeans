@@ -1,26 +1,24 @@
-import { motion } from 'framer-motion';
-
 export default function Marquee() {
   const items = [
-    'TRANSMISSION', 'DISTRIBUTION', 'SUBSTATION', 'STORM RESPONSE',
-    'VETERAN OWNED', 'SAFETY FIRST', 'GULF SOUTH',
-    'TRANSMISSION', 'DISTRIBUTION', 'SUBSTATION', 'STORM RESPONSE',
-    'VETERAN OWNED', 'SAFETY FIRST', 'GULF SOUTH'
+    'Tree Removal', 'Stump Grinding', 'Emergency Services', 'Free Estimates',
+    '30+ Years Experience', 'Trim & Prune', 'Hazardous Tree Assessment',
+    'Family Owned', 'Clean Up Services', 'Licensed & Insured'
   ];
+  const doubled = [...items, ...items];
 
   return (
-    <div style={{ overflow: 'hidden', borderTop: '1px solid rgba(240,240,250,0.06)', borderBottom: '1px solid rgba(240,240,250,0.06)', padding: '0.75rem 0', background: '#000' }}>
-      <motion.div
-        animate={{ x: [0, -1920] }}
-        transition={{ ease: 'linear', duration: 35, repeat: Infinity }}
-        style={{ display: 'flex', width: 'max-content' }}>
-        {items.map((item, idx) => (
-          <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', padding: '0 2rem', whiteSpace: 'nowrap' }}>
-            <div style={{ width: '3px', height: '3px', background: 'var(--red)', opacity: 0.5 }}></div>
-            <span style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', letterSpacing: '0.2em', fontWeight: 600, color: 'rgba(240,240,250,0.2)' }}>{item}</span>
-          </div>
+    <div style={{
+      overflow: 'hidden',
+      borderTop: '1px solid var(--glass-border)',
+      borderBottom: '1px solid var(--glass-border)',
+      padding: '1rem 0',
+      background: 'var(--forest)',
+    }}>
+      <div className="marquee-track">
+        {doubled.map((item, i) => (
+          <span key={i} className="marquee-item">{item}</span>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

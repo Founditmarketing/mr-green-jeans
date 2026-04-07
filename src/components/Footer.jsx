@@ -1,52 +1,69 @@
 import { Link } from 'react-router-dom';
+import { Phone, Mail, MapPin, TreePine } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#000', borderTop: '1px solid rgba(240,240,250,0.06)', padding: '5rem 2rem 2rem' }}>
-      <div style={{ maxWidth: '1300px', margin: '0 auto', display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '3rem' }}>
+    <footer className="footer">
+      <div className="footer-grid">
         <div>
-          <Link to="/" style={{ display: 'inline-block', marginBottom: '1.5rem' }}>
-            <img src="https://www.sheltonenergy.com/html/images/imgs/sticky-logo.png" alt="Shelton Energy" style={{ height: '35px' }} />
-          </Link>
-          <p style={{ color: 'rgba(240,240,250,0.3)', lineHeight: 1.6, maxWidth: '280px', fontSize: '0.85rem' }}>
-            Veteran-owned utility contractor delivering reliable power infrastructure across the Gulf South.
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
+            <TreePine size={22} color="var(--gold)" />
+            <span style={{ fontFamily: 'Playfair Display', fontSize: '1.3rem', fontWeight: 700, color: 'var(--cream)' }}>
+              Mr. Green <span style={{ color: 'var(--gold)' }}>Jeans</span>
+            </span>
+          </div>
+          <p style={{ fontSize: '0.9rem', lineHeight: 1.7, color: 'var(--sage)', maxWidth: '320px', marginBottom: '1.5rem' }}>
+            Four generations of expert tree care. Serving Alexandria, Pineville, and all of Central Louisiana since 1994.
           </p>
+          <a href="tel:3187302800" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--gold)', fontFamily: 'Barlow Condensed', fontWeight: 700, fontSize: '1.2rem', letterSpacing: '0.05em' }}>
+            <Phone size={18} /> (318) 730-2800
+          </a>
         </div>
 
         <div>
-          <h4 style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(240,240,250,0.3)', marginBottom: '1.5rem' }}>Company</h4>
+          <h4 style={{ fontFamily: 'Barlow Condensed', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '1.25rem' }}>Services</h4>
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            {['About', 'Safety', 'Careers', 'Contact'].map(link => (
-              <li key={link}><Link to={`/${link.toLowerCase()}`} style={{ color: 'rgba(240,240,250,0.5)', fontSize: '0.85rem', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color='var(--red)'} onMouseOut={e => e.currentTarget.style.color='rgba(240,240,250,0.5)'}>{link}</Link></li>
+            {['Tree Removal', 'Stump Grinding', 'Emergency Services', 'Trim & Prune', 'Hazardous Trees', 'Clean Up'].map(s => (
+              <li key={s}><Link to="/services" style={{ fontSize: '0.88rem', color: 'var(--sage)', transition: 'color 0.3s' }}
+                onMouseOver={e => e.currentTarget.style.color='var(--cream)'}
+                onMouseOut={e => e.currentTarget.style.color='var(--sage)'}>{s}</Link></li>
             ))}
           </ul>
         </div>
 
         <div>
-          <h4 style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(240,240,250,0.3)', marginBottom: '1.5rem' }}>Services</h4>
+          <h4 style={{ fontFamily: 'Barlow Condensed', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '1.25rem' }}>Company</h4>
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            {['Transmission', 'Distribution', 'Substation', 'Storm Response'].map(link => (
-              <li key={link}><Link to="/services" style={{ color: 'rgba(240,240,250,0.5)', fontSize: '0.85rem', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color='var(--red)'} onMouseOut={e => e.currentTarget.style.color='rgba(240,240,250,0.5)'}>{link}</Link></li>
+            {[
+              { label: 'About Us', to: '/about' },
+              { label: 'Our Services', to: '/services' },
+              { label: 'Contact', to: '/contact' },
+            ].map(({ label, to }) => (
+              <li key={label}><Link to={to} style={{ fontSize: '0.88rem', color: 'var(--sage)', transition: 'color 0.3s' }}
+                onMouseOver={e => e.currentTarget.style.color='var(--cream)'}
+                onMouseOut={e => e.currentTarget.style.color='var(--sage)'}>{label}</Link></li>
             ))}
           </ul>
         </div>
 
         <div>
-          <h4 style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(240,240,250,0.3)', marginBottom: '1.5rem' }}>Contact</h4>
-          <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            <li><a href="tel:318-443-5894" style={{ color: 'rgba(240,240,250,0.5)', fontSize: '0.85rem' }}>318.443.5894</a></li>
-            <li><a href="mailto:info@sheltonenergy.com" style={{ color: 'rgba(240,240,250,0.5)', fontSize: '0.85rem' }}>info@sheltonenergy.com</a></li>
-            <li><a href="https://goo.gl/maps/iyc37Lib2cfxyCFP8" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(240,240,250,0.3)', fontSize: '0.85rem', lineHeight: 1.5 }}>1439 Centre Court, Suite 600<br/>Alexandria, LA 71301</a></li>
+          <h4 style={{ fontFamily: 'Barlow Condensed', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '1.25rem' }}>Service Areas</h4>
+          <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+            {['Alexandria', 'Pineville', 'Leesville', 'DeRidder', 'Natchitoches', 'Shreveport', 'Bossier City'].map(area => (
+              <li key={area} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', color: 'var(--sage)' }}>
+                <MapPin size={12} color="var(--gold)" opacity={0.5} /> {area}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
-      
-      <div style={{ maxWidth: '1300px', margin: '4rem auto 0', paddingTop: '2rem', borderTop: '1px solid rgba(240,240,250,0.06)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-        <p style={{ fontSize: '0.75rem', color: 'rgba(240,240,250,0.2)', letterSpacing: '0.05em' }}>&copy; 2026 Shelton Energy Solutions. All rights reserved.</p>
-        <span style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--red)', opacity: 0.6 }}>Veteran Owned</span>
-      </div>
 
-      <style>{`@media(max-width: 900px) { footer > div:first-child { grid-template-columns: 1fr 1fr !important; } }`}</style>
+      <div className="footer-bottom">
+        <span>© {new Date().getFullYear()} Mr. Green Jeans Tree Service. All rights reserved.</span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+          <Mail size={13} /> info@mrgreenjeanstreeservice.com
+        </span>
+      </div>
     </footer>
   );
 }
