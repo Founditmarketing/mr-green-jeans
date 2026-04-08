@@ -447,4 +447,45 @@ video.hero-bg {
     padding-right: 1.25rem !important;
   }
   .hero h1 { font-size: 2.8rem !important; }
+
+  /* Stack all 2-column grids on mobile */
+  .heritage-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  /* Promotions cards stack vertically */
+  .promo-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  /* About page values grid */
+  .values-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  /* Services page detail cards */
+  .service-detail-card {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    padding: 2rem 1.5rem !important;
+  }
+
+  /* Contact page grid */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+
+  /* Tighten section padding on mobile */
+  .page-hero {
+    padding: 8rem 1.25rem 3rem !important;
+  }
+
+  /* Better CTA section spacing */
+  .cta-section {
+    padding: 4rem 1.25rem;
+  }
 }

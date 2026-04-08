@@ -20,7 +20,7 @@ export default function About() {
       {/* ═══ OUR STORY ═══ */}
       <section className="section" style={{ background: 'var(--white)', color: 'var(--text-dark)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+          <div className="heritage-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <img src="/hero-tree.png" alt="Mr Green Jeans team at work" style={{ width: '100%', borderRadius: '16px', boxShadow: '0 30px 80px rgba(0,0,0,0.12)' }} />
             </motion.div>
@@ -49,7 +49,7 @@ export default function About() {
             <h2 className="section-title" style={{ textAlign: 'center' }}>What Sets Us Apart</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+          <div className="values-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
             {[
               { icon: <Shield color="var(--gold)" size={24} />, title: 'Safety First', desc: 'Every job begins and ends with safety. Our team is fully licensed, insured, and trained to the highest industry standards.' },
               { icon: <Award color="var(--gold)" size={24} />, title: 'Quality Guaranteed', desc: '97.7% customer satisfaction rate speaks for itself. We don\'t just meet expectations — we exceed them every time.' },

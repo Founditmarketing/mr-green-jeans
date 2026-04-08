@@ -67,6 +67,7 @@ export default function Services() {
               <motion.div key={srv.title}
                 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ delay: idx * 0.08 }}
+                className="service-detail-card"
                 style={{
                   display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem',
                   background: 'var(--glass-light)', backdropFilter: 'blur(20px)',

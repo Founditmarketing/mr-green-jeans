@@ -216,7 +216,7 @@ export default function Home() {
       {/* ═══ ABOUT / COMMITMENT ═══ */}
       <section className="section" style={{ background: 'var(--white)', color: 'var(--text-dark)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+          <div className="heritage-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="section-label">Our Heritage</div>
               <h2 className="section-title-dark">Four Generations<br />of <span style={{ color: 'var(--canopy)' }}>Excellence</span></h2>
@@ -230,7 +230,11 @@ export default function Home() {
               <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Owners, Mr. Green Jeans Tree Service</div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <img src="/landscape.png" alt="Beautiful maintained landscape" style={{ width: '100%', borderRadius: '16px', boxShadow: '0 30px 80px rgba(0,0,0,0.15)' }} />
+              <video
+                autoPlay muted loop playsInline
+                src="/Generated Video April 07, 2026 - 7_48PM.mp4"
+                style={{ width: '100%', borderRadius: '16px', boxShadow: '0 30px 80px rgba(0,0,0,0.15)' }}
+              />
             </motion.div>
           </div>
         </div>
@@ -265,7 +269,7 @@ export default function Home() {
       {/* ═══ PROMOTIONS ═══ */}
       <section style={{ background: 'var(--bark)', padding: '4rem 2rem' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+          <div className="promo-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
             {[
               { label: 'Spring Season', title: 'Kickoff Special', desc: 'Start the season right with our special spring pricing. Call today!', icon: <Leaf color="var(--gold)" size={20} /> },
               { label: 'Refer-A-Friend', title: 'Receive $100', desc: 'Refer a friend to Mr. Green Jeans and receive $100 reward.', icon: <Star color="var(--gold)" size={20} /> },
