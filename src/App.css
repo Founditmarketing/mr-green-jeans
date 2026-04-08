@@ -25,17 +25,16 @@
   justify-content: space-between;
 }
 .navbar .logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--cream);
-  letter-spacing: 0.02em;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
 }
-.navbar .logo .logo-accent {
-  color: var(--gold);
+.navbar .logo .nav-logo-img {
+  height: 52px;
+  width: auto;
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.navbar.scrolled .logo .nav-logo-img {
+  height: 40px;
 }
 .navbar .desktop-nav {
   display: flex;
@@ -153,6 +152,9 @@
   object-fit: cover;
   object-position: center;
   z-index: 0;
+}
+video.hero-bg {
+  pointer-events: none;
 }
 .hero-overlay {
   position: absolute;

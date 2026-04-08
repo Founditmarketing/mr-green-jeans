@@ -1,16 +1,13 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, TreePine } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-grid">
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
-            <TreePine size={22} color="var(--gold)" />
-            <span style={{ fontFamily: 'Playfair Display', fontSize: '1.3rem', fontWeight: 700, color: 'var(--cream)' }}>
-              Mr. Green <span style={{ color: 'var(--gold)' }}>Jeans</span>
-            </span>
+          <div style={{ marginBottom: '1.25rem' }}>
+            <img src="/logo.png" alt="Mr. Green Jeans Tree Service" style={{ height: '70px', width: 'auto' }} />
           </div>
           <p style={{ fontSize: '0.9rem', lineHeight: 1.7, color: 'var(--sage)', maxWidth: '320px', marginBottom: '1.5rem' }}>
             Four generations of expert tree care. Serving Alexandria, Pineville, and all of Central Louisiana since 1994.

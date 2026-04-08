@@ -19,7 +19,7 @@ export default function Preloader() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}>
-            Mr. Green <span style={{ color: 'var(--gold)' }}>Jeans</span>
+            <img src="/logo.png" alt="Mr. Green Jeans Tree Service" style={{ height: '100px', width: 'auto' }} />
           </motion.div>
           <div className="preloader-bar">
             <div className="preloader-fill" />

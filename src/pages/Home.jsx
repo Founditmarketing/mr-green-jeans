@@ -86,7 +86,17 @@ export default function Home() {
     <div>
       {/* ═══ HERO ═══ */}
       <section className="hero" style={{ background: 'var(--forest)' }}>
-        <img src="/hero-tree.png" alt="Professional tree removal service" className="hero-bg" style={{ opacity: 0.55 }} />
+        <video
+          className="hero-bg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/hero-tree.png"
+          style={{ opacity: 0.55 }}
+        >
+          <source src="/Generated Video April 07, 2026 - 7_06PM.mp4" type="video/mp4" />
+        </video>
         <div className="hero-overlay" />
 
         <div className="container" style={{ paddingTop: 'clamp(9rem, 20vh, 14rem)', zIndex: 3, position: 'relative' }}>

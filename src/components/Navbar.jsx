@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, TreePine } from 'lucide-react';
+import { Phone } from 'lucide-react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -35,8 +35,7 @@ export default function Navbar() {
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-inner">
           <Link to="/" className="logo">
-            <TreePine size={24} color="var(--gold)" />
-            <span>Mr. Green <span className="logo-accent">Jeans</span></span>
+            <img src="/logo.png" alt="Mr. Green Jeans Tree Service" className="nav-logo-img" />
           </Link>
 
           <div className="desktop-nav">
