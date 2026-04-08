@@ -14,10 +14,10 @@
   --bark: hsl(25, 30%, 18%);
   --bark-light: hsl(25, 22%, 25%);
   --cream: hsl(40, 33%, 96%);
-  --sage: hsl(140, 12%, 55%);
+  --sage: hsl(140, 10%, 72%);
   --white: hsl(42, 20%, 97%);
   --text-dark: hsl(152, 30%, 8%);
-  --text-muted: hsl(140, 8%, 50%);
+  --text-muted: hsl(140, 8%, 42%);
 
   /* Glass */
   --glass: rgba(20, 40, 30, 0.85);
@@ -85,7 +85,7 @@ h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
 }
 
 /* ═══ LAYOUT ═══ */
-.section { padding: 7rem 2rem; position: relative; }
+.section { padding: 5rem 2rem; position: relative; }
 .container { max-width: 1300px; margin: 0 auto; position: relative; z-index: 1; }
 
 /* ═══ BUTTONS ═══ */
@@ -275,7 +275,7 @@ h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
   .desktop-only { display: none !important; }
   .mobile-only { display: block !important; }
 
-  .section { padding: 4rem 1.25rem; }
+  .section { padding: 3.5rem 1.25rem; }
 
   .mobile-carousel {
     display: flex !important;
@@ -312,5 +312,5 @@ h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
 }
 
 @media(max-width: 600px) {
-  .section { padding: 3rem 1rem; }
+  .section { padding: 2.5rem 1rem; }
 }

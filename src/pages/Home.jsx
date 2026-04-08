@@ -162,7 +162,7 @@ export default function Home() {
       {/* ═══ SERVICES BENTO ═══ */}
       <section className="section" style={{ background: 'var(--forest)' }}>
         <div className="container">
-          <div style={{ maxWidth: '500px', marginBottom: '3.5rem' }}>
+          <div style={{ maxWidth: '500px', marginBottom: '2.5rem' }}>
             <div className="section-label">What We Do</div>
             <h2 className="section-title">Complete Tree<br />Care Solutions</h2>
             <p style={{ fontSize: '0.95rem', lineHeight: 1.7, color: 'var(--sage)' }}>
@@ -229,7 +229,7 @@ export default function Home() {
       {/* ═══ 3-STEP PROCESS ═══ */}
       <section className="section" style={{ background: 'var(--forest)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 4rem' }}>
+          <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
             <div className="section-label" style={{ justifyContent: 'center' }}>How It Works</div>
             <h2 className="section-title" style={{ textAlign: 'center' }}>Three Simple Steps</h2>
           </div>
@@ -280,7 +280,7 @@ export default function Home() {
       {/* ═══ TESTIMONIALS ═══ */}
       <section className="section" style={{ background: 'var(--forest)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 4rem' }}>
+          <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
             <div className="section-label" style={{ justifyContent: 'center' }}>Testimonials</div>
             <h2 className="section-title" style={{ textAlign: 'center' }}>What Our Clients Say</h2>
             <p style={{ fontSize: '0.95rem', color: 'var(--sage)', lineHeight: 1.7 }}>
@@ -313,7 +313,7 @@ export default function Home() {
       {/* ═══ SERVICE AREAS ═══ */}
       <section className="section" style={{ background: 'var(--forest-mid)', borderTop: '1px solid var(--glass-border)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '650px', margin: '0 auto 3.5rem' }}>
+          <div style={{ textAlign: 'center', maxWidth: '650px', margin: '0 auto 2.5rem' }}>
             <div className="section-label" style={{ justifyContent: 'center' }}>Coverage Area</div>
             <h2 className="section-title" style={{ textAlign: 'center' }}>Serving Central<br />Louisiana & Beyond</h2>
           </div>
