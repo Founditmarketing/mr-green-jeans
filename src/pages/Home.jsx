@@ -86,13 +86,15 @@ export default function Home() {
     <div>
       {/* ═══ HERO ═══ */}
       <section className="hero" style={{ background: 'var(--forest)' }}>
+        {/* Static fallback for iOS (behind video) */}
+        <img src="/equipment.png" alt="" className="hero-bg" style={{ opacity: 0.45 }} />
         <video
-          className="hero-bg"
+          className="hero-bg hero-video"
           autoPlay
           muted
           loop
           playsInline
-          poster="/hero-tree.png"
+          poster="/equipment.png"
           style={{ opacity: 0.55 }}
         >
           <source src="/Generated Video April 07, 2026 - 7_06PM.mp4" type="video/mp4" />

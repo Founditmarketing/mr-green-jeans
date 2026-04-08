@@ -156,6 +156,9 @@
 video.hero-bg {
   pointer-events: none;
 }
+.hero-video {
+  z-index: 1;
+}
 .hero-overlay {
   position: absolute;
   top: 0;
