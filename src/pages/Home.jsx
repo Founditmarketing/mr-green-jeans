@@ -171,8 +171,7 @@ export default function Home() {
       {/* ═══ STATS ═══ */}
       <section className="stats-bar">
         <div className="container">
-          <div className="carousel-wrapper">
-            <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', textAlign: 'center' }}>
+          <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', textAlign: 'center' }}>
               {[
                 { value: 5239, suffix: '+', label: 'Trees Removed' },
                 { value: 30, suffix: '+', label: 'Years Experience' },
@@ -189,8 +188,6 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
-            <SwipeHint />
-          </div>
         </div>
       </section>
 
