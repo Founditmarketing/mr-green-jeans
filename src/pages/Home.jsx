@@ -137,8 +137,6 @@ export default function Home() {
     <div>
       {/* ═══ HERO ═══ */}
       <section className="hero" style={{ background: 'var(--forest)' }}>
-        {/* Static fallback for iOS (behind video) */}
-        <img src="/equipment.png" alt="" className="hero-bg" style={{ opacity: 0.45 }} />
         <video
           className="hero-bg hero-video"
           autoPlay
