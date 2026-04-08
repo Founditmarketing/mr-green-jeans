@@ -437,58 +437,224 @@ video.hero-bg {
   .mobile-action-bar { display: flex !important; }
 }
 
+/* ═══════════════════════════════════════════════════════
+   MOBILE-FIRST DESIGN — Purpose-built for phones
+   ═══════════════════════════════════════════════════════ */
 @media(max-width: 768px) {
-  .bento-grid { grid-template-columns: 1fr; }
-  .process-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .process-grid::before { display: none; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
 
+  /* ── Global Mobile Rhythm ── */
+  .section { padding: 3rem 1.25rem; }
+
+  /* ── Navbar: Compact ── */
+  .navbar { padding: 0.6rem 1rem; }
+  .navbar.scrolled { padding: 0.5rem 1rem; }
+  .navbar .logo .nav-logo-img { height: 42px; }
+  .navbar.scrolled .logo .nav-logo-img { height: 36px; }
+
+  /* ── Mobile Action Bar: Slim & Premium ── */
+  .mobile-action-bar {
+    padding: 0.5rem 0.75rem !important;
+    gap: 0.5rem !important;
+  }
+  .mobile-action-bar .btn {
+    padding: 0.7rem 1rem !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  /* ── HERO: Centered, cinematic mobile ── */
+  .hero { min-height: 100svh; }
   .hero .container {
-    padding-top: 7rem !important;
+    padding-top: 6.5rem !important;
+    padding-bottom: 6rem !important;
     padding-left: 1.25rem !important;
     padding-right: 1.25rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
   }
-  .hero h1 { font-size: 2.8rem !important; }
+  .hero h1 {
+    font-size: 2.6rem !important;
+    line-height: 1.05 !important;
+    margin-bottom: 1rem !important;
+  }
+  .hero p {
+    font-size: 0.95rem !important;
+    margin-bottom: 1.75rem !important;
+  }
+  .hero .btn {
+    flex: 1;
+    justify-content: center;
+    padding: 0.9rem 1.5rem !important;
+    font-size: 0.78rem !important;
+  }
+  .hero-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 30, 22, 0.3) 0%,
+      rgba(15, 30, 22, 0.5) 30%,
+      rgba(15, 30, 22, 0.8) 65%,
+      var(--forest) 100%
+    ) !important;
+  }
 
-  /* Stack all 2-column grids on mobile */
+  /* ── Stats Bar: Compact ── */
+  .stats-bar {
+    padding: 1.5rem 0 !important;
+    border: none !important;
+  }
+  .stats-bar .mobile-carousel > div {
+    min-width: 70vw !important;
+    text-align: center;
+  }
+
+  /* ── Services Bento: Full-width cards ── */
+  .bento-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  .bento-card {
+    padding: 1.75rem 1.5rem !important;
+    border-radius: 12px !important;
+  }
+  .bento-card .bento-icon {
+    width: 44px !important;
+    height: 44px !important;
+    margin-bottom: 1rem !important;
+  }
+  .bento-card h3 { font-size: 1.15rem !important; }
+  .bento-card p { font-size: 0.85rem !important; }
+
+  /* ── Process Steps: Compact vertical ── */
+  .process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.75rem !important;
+  }
+  .process-grid::before { display: none; }
+  .process-number {
+    width: 60px !important;
+    height: 60px !important;
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .process-step h3 { font-size: 1.05rem !important; }
+  .process-step p { font-size: 0.82rem !important; }
+
+  /* ── Heritage / Four Generations ── */
   .heritage-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.75rem !important;
+  }
+  .heritage-grid video,
+  .heritage-grid img {
+    border-radius: 10px !important;
+  }
+
+  /* ── Promotions: Swipeable horizontal strip ── */
+  .promo-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 1rem !important;
+    padding-bottom: 0.5rem !important;
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .promo-grid::-webkit-scrollbar { display: none; }
+  .promo-grid > div {
+    min-width: 80vw !important;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+
+  /* ── About Values Grid ── */
+  .values-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* ── Services Detail Cards ── */
+  .service-detail-card {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    padding: 1.75rem 1.5rem !important;
+    border-radius: 12px !important;
+  }
+
+  /* ── Contact Grid ── */
+  .contact-grid {
     grid-template-columns: 1fr !important;
     gap: 2rem !important;
   }
 
-  /* Promotions cards stack vertically */
-  .promo-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.25rem !important;
+  /* ── Testimonials ── */
+  .testimonial-card {
+    padding: 1.75rem 1.5rem !important;
+    border-radius: 12px !important;
   }
 
-  /* About page values grid */
-  .values-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.25rem !important;
-  }
-
-  /* Services page detail cards */
-  .service-detail-card {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-    padding: 2rem 1.5rem !important;
-  }
-
-  /* Contact page grid */
-  .contact-grid {
-    grid-template-columns: 1fr !important;
-    gap: 2.5rem !important;
-  }
-
-  /* Tighten section padding on mobile */
-  .page-hero {
-    padding: 8rem 1.25rem 3rem !important;
-  }
-
-  /* Better CTA section spacing */
+  /* ── CTA Section ── */
   .cta-section {
-    padding: 4rem 1.25rem;
+    padding: 3.5rem 1.25rem !important;
   }
+  .cta-section h2 { font-size: 2rem !important; }
+  .cta-section .btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  /* ── Inner Page Heroes ── */
+  .page-hero {
+    padding: 7rem 1.25rem 2.5rem !important;
+  }
+  .page-hero h1 { font-size: 2.2rem !important; }
+
+  /* ── Footer ── */
+  .footer { padding: 3rem 1.25rem 1.5rem !important; }
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    padding-top: 1.5rem !important;
+    margin-top: 2rem !important;
+  }
+
+  /* ── Section Titles: Mobile-tuned ── */
+  .section-title {
+    font-size: 2rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .section-title-dark {
+    font-size: 2rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .section-label {
+    font-size: 0.65rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  /* ── Glass Cards ── */
+  .glass-card {
+    padding: 1.75rem 1.5rem !important;
+    border-radius: 12px !important;
+  }
+
+  /* ── Body padding for sticky footer ── */
+  body { padding-bottom: 56px; }
+}
+
+/* ═══ Extra-small phones ═══ */
+@media(max-width: 380px) {
+  .hero h1 { font-size: 2.2rem !important; }
+  .section-title, .section-title-dark { font-size: 1.75rem !important; }
+  .bento-card { padding: 1.5rem 1.25rem !important; }
+  .process-number { width: 52px !important; height: 52px !important; font-size: 1.3rem !important; }
 }
