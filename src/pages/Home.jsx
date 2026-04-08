@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform, useInView } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, useInView, useScroll } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { TreePine, Axe, AlertTriangle, ClipboardCheck, Phone, ArrowRight, Star, ChevronRight, MapPin, Clock, Shield, Leaf, CheckCircle, Award, Users } from 'lucide-react';
 import Marquee from '../components/Marquee';
+import BeforeAfter from '../components/BeforeAfter';
+import SkeletonImage from '../components/SkeletonImage';
 
 function SwipeHint() {
   return (
@@ -105,6 +107,30 @@ const testimonials = [
     text: 'Mr. Green Jeans came out when I closed on my first rental property that had HORRIBLE hanging limbs and 2 trees needing to be removed. From the second I called for a quote, to the moment they cut the last limb — EVERYONE was wonderful.',
   },
 ];
+
+function ParallaxSection() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+  const y = useTransform(scrollYProgress, [0, 1], ['-15%', '15%']);
+
+  return (
+    <section ref={ref} style={{ position: 'relative', height: 'clamp(300px, 45vw, 500px)', overflow: 'hidden' }}>
+      <motion.img
+        src="/equipment.png" alt="Tree service crew at work"
+        style={{ position: 'absolute', inset: '-15% 0', width: '100%', height: '130%', objectFit: 'cover', y }}
+      />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, var(--forest) 0%, transparent 25%, transparent 75%, var(--forest) 100%)', zIndex: 1 }} />
+      <div className="container" style={{ position: 'relative', zIndex: 2, height: '100%', display: 'flex', alignItems: 'center' }}>
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+          <div className="section-label">Our Commitment</div>
+          <h2 style={{ fontFamily: 'Playfair Display', fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', color: 'var(--cream)', fontWeight: 600, lineHeight: 1.15, maxWidth: '400px' }}>
+            Safety First,<br />Quality Always.
+          </h2>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   return (
@@ -223,19 +249,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ IMAGE BREAK ═══ */}
-      <section style={{ position: 'relative', height: 'clamp(300px, 45vw, 500px)', overflow: 'hidden' }}>
-        <img src="/equipment.png" alt="Tree service crew at work" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, var(--forest) 0%, transparent 25%, transparent 75%, var(--forest) 100%)', zIndex: 1 }} />
-        <div className="container" style={{ position: 'relative', zIndex: 2, height: '100%', display: 'flex', alignItems: 'center' }}>
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-            <div className="section-label">Our Commitment</div>
-            <h2 style={{ fontFamily: 'Playfair Display', fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', color: 'var(--cream)', fontWeight: 600, lineHeight: 1.15, maxWidth: '400px' }}>
-              Safety First,<br />Quality Always.
-            </h2>
-          </motion.div>
-        </div>
-      </section>
+      {/* ═══ IMAGE BREAK — PARALLAX ═══ */}
+      <ParallaxSection />
 
       {/* ═══ ABOUT / COMMITMENT ═══ */}
       <section className="section" style={{ background: 'var(--white)', color: 'var(--text-dark)' }}>
@@ -283,8 +298,8 @@ export default function Home() {
                 viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
                 style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', aspectRatio: '4/3', cursor: 'pointer' }}
                 className="portfolio-item">
-                <img src={project.src} alt={project.title} loading="lazy"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.4,0,0.2,1)' }} />
+                <SkeletonImage src={project.src} alt={project.title}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.4,0,0.2,1)', borderRadius: '12px' }} />
                 <div className="portfolio-overlay" style={{
                   position: 'absolute', bottom: 0, left: 0, right: 0,
                   background: 'linear-gradient(transparent, rgba(15,30,22,0.9))',
@@ -422,6 +437,20 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══ BEFORE / AFTER ═══ */}
+      <section className="section" style={{ background: 'var(--forest)' }}>
+        <div className="container" style={{ maxWidth: '800px' }}>
+          <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
+            <div className="section-label" style={{ justifyContent: 'center' }}>The Results</div>
+            <h2 className="section-title" style={{ textAlign: 'center' }}>See the Difference</h2>
+            <p style={{ fontSize: '0.92rem', color: 'var(--sage)', lineHeight: 1.7 }}>Drag the slider to compare before and after our professional tree removal service.</p>
+          </div>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <BeforeAfter before="/before.png" after="/after.png" height="clamp(280px, 50vw, 450px)" />
+          </motion.div>
         </div>
       </section>
 
