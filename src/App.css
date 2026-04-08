@@ -272,6 +272,12 @@ video.hero-bg {
   border-radius: 16px;
   padding: 2.5rem;
   position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.testimonial-card:hover {
+  border-color: var(--glass-border-gold);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 .testimonial-card::before {
   content: '"';
@@ -288,6 +294,11 @@ video.hero-bg {
   display: flex;
   gap: 4px;
   margin-bottom: 1rem;
+}
+
+/* ═══ PORTFOLIO ═══ */
+.portfolio-item:hover img {
+  transform: scale(1.08);
 }
 
 /* ═══ CTA SECTION ═══ */
@@ -619,6 +630,27 @@ video.hero-bg {
     margin-bottom: 0.75rem !important;
   }
 
+  /* ── Why Choose Us: Comparison Grid ── */
+  .comparison-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  .comparison-grid > div {
+    padding: 1.5rem !important;
+  }
+
+  /* ── Certifications Bar ── */
+  .certs-grid {
+    gap: 1.25rem 2rem !important;
+    justify-content: flex-start !important;
+  }
+
+  /* ── Contact Grid ── */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
   /* ── CTA Section ── */
   .cta-section {
     padding: 3.5rem 1.25rem !important;
@@ -628,6 +660,15 @@ video.hero-bg {
     flex: 1;
     justify-content: center;
   }
+
+  /* ── Portfolio Grid ── */
+  .portfolio-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  /* ── FAQ Section ── */
+  .faq-item button span { font-size: 0.95rem !important; }
 
   /* ── Inner Page Heroes ── */
   .page-hero {

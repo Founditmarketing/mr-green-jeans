@@ -1,6 +1,34 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle, ChevronDown } from 'lucide-react';
+
+function FAQItem({ question, answer }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{ borderBottom: '1px solid var(--glass-border)' }}>
+      <button onClick={() => setOpen(!open)} style={{
+        width: '100%', background: 'none', border: 'none', cursor: 'pointer',
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        padding: '1.25rem 0', gap: '1rem', textAlign: 'left',
+      }}>
+        <span style={{ fontFamily: 'Playfair Display', fontSize: '1.05rem', color: 'var(--cream)', fontWeight: 500 }}>{question}</span>
+        <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.3 }}>
+          <ChevronDown size={18} color="var(--gold)" />
+        </motion.div>
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }}
+            style={{ overflow: 'hidden' }}>
+            <p style={{ fontSize: '0.9rem', lineHeight: 1.75, color: 'var(--sage)', paddingBottom: '1.25rem' }}>{answer}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -135,6 +163,54 @@ export default function Contact() {
                 )}
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ GOOGLE MAP ═══ */}
+      <section style={{ background: 'var(--forest-mid)', padding: 0 }}>
+        <div style={{ width: '100%', height: '350px' }}>
+          <iframe
+            title="Mr. Green Jeans Service Area"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108893.39599046!2d-92.53!3d31.31!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86243a3e0c30fa21%3A0x6f3e1abf4a30c4b0!2sAlexandria%2C%20LA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+            width="100%" height="100%" style={{ border: 0, filter: 'saturate(0.6) brightness(0.8)' }}
+            allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+      </section>
+
+      {/* ═══ FAQ ═══ */}
+      <section className="section" style={{ background: 'var(--forest)' }}>
+        <div className="container" style={{ maxWidth: '700px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <div className="section-label" style={{ justifyContent: 'center' }}>Common Questions</div>
+            <h2 className="section-title" style={{ textAlign: 'center' }}>Frequently Asked Questions</h2>
+          </div>
+          <div>
+            <FAQItem
+              question="How much does tree removal cost?"
+              answer="Tree removal costs vary depending on the tree's size, location, and complexity. We offer free on-site assessments to provide accurate quotes. Most residential jobs range from a few hundred to several thousand dollars. Call (318) 730-2800 for your free estimate."
+            />
+            <FAQItem
+              question="Do you handle insurance claims?"
+              answer="Yes! We work directly with your insurance company on storm damage claims. Many of our customers have had zero out-of-pocket costs for storm-related tree removal. We handle all the paperwork and communication with your insurer."
+            />
+            <FAQItem
+              question="Are you licensed and insured?"
+              answer="Absolutely. Mr. Green Jeans Tree Service is fully licensed and insured, including general liability and workers' compensation. We've maintained our credentials for over 30 years — your property and our crew are always protected."
+            />
+            <FAQItem
+              question="How quickly can you respond to emergencies?"
+              answer="We offer 24/7 emergency response. For urgent situations like storm damage or trees on structures, we typically dispatch a crew within hours. Call our emergency line at (318) 730-2800 anytime, day or night."
+            />
+            <FAQItem
+              question="What areas do you serve?"
+              answer="We serve Alexandria, Pineville, Leesville, DeRidder, Natchitoches, Shreveport, Bossier City, Tioga, Marksville, Ball, Boyce, Woodworth, and the greater Central Louisiana region. For larger projects, we travel statewide."
+            />
+            <FAQItem
+              question="What happens to the wood and debris after removal?"
+              answer="We handle complete cleanup. All branches, limbs, and debris are removed from your property. Larger wood can be cut into firewood-sized pieces if you'd like to keep it. Our goal is to leave your property cleaner than we found it."
+            />
           </div>
         </div>
       </section>

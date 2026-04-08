@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { TreePine, Axe, AlertTriangle, ClipboardCheck, Phone, ArrowRight, Star, ChevronRight, MapPin, Clock, Shield, Leaf } from 'lucide-react';
+import { TreePine, Axe, AlertTriangle, ClipboardCheck, Phone, ArrowRight, Star, ChevronRight, MapPin, Clock, Shield, Leaf, CheckCircle, Award, Users } from 'lucide-react';
 import Marquee from '../components/Marquee';
 
 function SwipeHint() {
@@ -263,6 +263,41 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* ═══ PORTFOLIO GALLERY ═══ */}
+      <section className="section" style={{ background: 'var(--forest)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
+            <div className="section-label" style={{ justifyContent: 'center' }}>Our Work</div>
+            <h2 className="section-title" style={{ textAlign: 'center' }}>Recent Projects</h2>
+          </div>
+
+          <div className="portfolio-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            {[
+              { src: '/portfolio-1.png', title: 'Residential Removal', subtitle: 'Full crane operation' },
+              { src: '/portfolio-2.png', title: 'Stump Grinding', subtitle: 'Complete root extraction' },
+              { src: '/portfolio-3.png', title: 'Storm Cleanup', subtitle: 'Emergency response' },
+              { src: '/portfolio-4.png', title: 'Crane Operation', subtitle: 'Precision tree work' },
+            ].map((project, idx) => (
+              <motion.div key={idx}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
+                style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', aspectRatio: '4/3', cursor: 'pointer' }}
+                className="portfolio-item">
+                <img src={project.src} alt={project.title} loading="lazy"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.4,0,0.2,1)' }} />
+                <div className="portfolio-overlay" style={{
+                  position: 'absolute', bottom: 0, left: 0, right: 0,
+                  background: 'linear-gradient(transparent, rgba(15,30,22,0.9))',
+                  padding: '2rem 1.25rem 1.25rem', transition: 'opacity 0.4s',
+                }}>
+                  <div style={{ fontFamily: 'Playfair Display', fontSize: '1.1rem', color: 'var(--cream)', fontWeight: 600 }}>{project.title}</div>
+                  <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.68rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--gold)', marginTop: '0.25rem' }}>{project.subtitle}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ═══ 3-STEP PROCESS ═══ */}
       <section className="section" style={{ background: 'var(--forest)' }}>
@@ -290,18 +325,93 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ═══ WHY CHOOSE US ═══ */}
+      <section className="section" style={{ background: 'var(--forest)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 3rem' }}>
+            <div className="section-label" style={{ justifyContent: 'center' }}>The Difference</div>
+            <h2 className="section-title" style={{ textAlign: 'center' }}>Why Choose<br />Mr. Green Jeans?</h2>
+          </div>
+
+          <div className="comparison-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', maxWidth: '800px', margin: '0 auto' }}>
+            {/* Us */}
+            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+              style={{ background: 'linear-gradient(135deg, rgba(207,167,80,0.1) 0%, rgba(207,167,80,0.02) 100%)', border: '1px solid var(--glass-border-gold)', borderRadius: '16px', padding: '2rem' }}>
+              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '1.5rem' }}>Mr. Green Jeans</div>
+              {[
+                'Four generations of expertise',
+                'Millions in professional equipment',
+                'Direct insurance claim handling',
+                '24/7 emergency response',
+                'Zero out-of-pocket storm damage',
+                'Licensed, insured & bonded',
+                'Free on-site assessments',
+              ].map((item, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.85rem' }}>
+                  <CheckCircle size={16} color="var(--gold)" style={{ flexShrink: 0 }} />
+                  <span style={{ fontSize: '0.88rem', color: 'var(--cream)', lineHeight: 1.4 }}>{item}</span>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* Others */}
+            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+              style={{ background: 'var(--glass-light)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '2rem', opacity: 0.65 }}>
+              <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--sage)', marginBottom: '1.5rem' }}>Other companies</div>
+              {[
+                'Limited experience',
+                'Basic tools & equipment',
+                'You handle insurance yourself',
+                'Business hours only',
+                'Full cost out of pocket',
+                'Questionable coverage',
+                'Estimates cost money',
+              ].map((item, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.85rem' }}>
+                  <div style={{ width: 16, height: 16, borderRadius: '50%', border: '1.5px solid var(--sage)', flexShrink: 0, opacity: 0.4 }} />
+                  <span style={{ fontSize: '0.88rem', color: 'var(--sage)', lineHeight: 1.4 }}>{item}</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ CERTIFICATIONS BAR ═══ */}
+      <section style={{ background: 'var(--forest-mid)', borderTop: '1px solid var(--glass-border)', borderBottom: '1px solid var(--glass-border)', padding: '2.5rem 1.25rem' }}>
+        <div className="container">
+          <div className="certs-grid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '3rem', flexWrap: 'wrap' }}>
+            {[
+              { icon: <Shield size={22} color="var(--gold)" />, label: 'Fully Insured' },
+              { icon: <Award size={22} color="var(--gold)" />, label: 'Licensed' },
+              { icon: <Users size={22} color="var(--gold)" />, label: 'Family Owned' },
+              { icon: <Clock size={22} color="var(--gold)" />, label: '30+ Years' },
+              { icon: <Star size={22} color="var(--gold)" />, label: '4.9★ Google' },
+            ].map((cert, idx) => (
+              <motion.div key={idx} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }} transition={{ delay: idx * 0.08 }}
+                style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                {cert.icon}
+                <span style={{ fontFamily: 'Barlow Condensed', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--cream)' }}>{cert.label}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═══ PROMOTIONS ═══ */}
       <section style={{ background: 'var(--bark)', padding: '4rem 2rem' }}>
         <div className="container">
           <div className="promo-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
             {[
-              { label: 'Spring Season', title: 'Kickoff Special', desc: 'Start the season right with our special spring pricing. Call today!', icon: <Leaf color="var(--gold)" size={20} /> },
-              { label: 'Refer-A-Friend', title: 'Receive $100', desc: 'Refer a friend to Mr. Green Jeans and receive $100 reward.', icon: <Star color="var(--gold)" size={20} /> },
-              { label: 'New Customer', title: 'Welcome Discount', desc: 'First-time customers enjoy special introductory pricing.', icon: <Shield color="var(--gold)" size={20} /> },
+              { label: 'Spring Season', title: 'Kickoff Special', desc: 'Start the season right with our special spring pricing. Call today!', icon: <Leaf color="var(--gold)" size={20} />, badge: 'Limited Time' },
+              { label: 'Refer-A-Friend', title: 'Receive $100', desc: 'Refer a friend to Mr. Green Jeans and receive $100 reward.', icon: <Star color="var(--gold)" size={20} />, badge: 'Most Popular' },
+              { label: 'New Customer', title: 'Welcome Discount', desc: 'First-time customers enjoy special introductory pricing.', icon: <Shield color="var(--gold)" size={20} />, badge: 'New' },
             ].map((promo, idx) => (
-              <motion.div key={idx} className="glass-card" style={{ textAlign: 'center' }}
+              <motion.div key={idx} className="glass-card" style={{ textAlign: 'center', position: 'relative', overflow: 'hidden' }}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ delay: idx * 0.1 }}>
+                {promo.badge && <div style={{ position: 'absolute', top: '12px', right: '-28px', background: 'var(--gold)', color: 'var(--forest)', fontFamily: 'Barlow Condensed', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '4px 36px', transform: 'rotate(45deg)' }}>{promo.badge}</div>}
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>{promo.icon}</div>
                 <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '0.5rem' }}>{promo.label}</div>
                 <h3 style={{ fontFamily: 'Playfair Display', fontSize: '1.5rem', color: 'var(--cream)', marginBottom: '0.5rem' }}>{promo.title}</h3>
@@ -321,9 +431,11 @@ export default function Home() {
           <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
             <div className="section-label" style={{ justifyContent: 'center' }}>Google Reviews</div>
             <h2 className="section-title" style={{ textAlign: 'center' }}>What Our Clients Say</h2>
-            <p style={{ fontSize: '0.95rem', color: 'var(--sage)', lineHeight: 1.7 }}>
-              Real reviews from real customers. Our 5-star reputation speaks for itself.
-            </p>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'var(--glass-light)', border: '1px solid var(--glass-border)', borderRadius: '100px', padding: '0.5rem 1.25rem', margin: '1rem auto 0' }}>
+              <div style={{ display: 'flex', gap: '2px' }}>{[...Array(5)].map((_, i) => <Star key={i} size={14} fill="var(--gold)" color="var(--gold)" />)}</div>
+              <span style={{ fontFamily: 'Playfair Display', fontSize: '1rem', fontWeight: 700, color: 'var(--cream)' }}>4.9</span>
+              <span style={{ fontSize: '0.78rem', color: 'var(--sage)' }}>· 50+ Reviews on Google</span>
+            </div>
           </div>
 
           <div className="testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
