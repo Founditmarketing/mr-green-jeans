@@ -498,14 +498,33 @@ video.hero-bg {
     ) !important;
   }
 
-  /* ── Stats Bar: Compact ── */
+  /* ── Override: Kill ALL horizontal scroll carousels ── */
+  .mobile-carousel {
+    display: grid !important;
+    overflow-x: visible !important;
+    scroll-snap-type: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .mobile-carousel > div {
+    min-width: unset !important;
+    scroll-snap-align: unset !important;
+  }
+  .carousel-wrapper::after { display: none !important; }
+
+  /* ── Stats Bar: Compact 2×2 grid ── */
   .stats-bar {
-    padding: 1.5rem 0 !important;
+    padding: 1.5rem 1.25rem !important;
     border: none !important;
   }
+  .stats-bar .mobile-carousel {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1.25rem 1rem !important;
+  }
   .stats-bar .mobile-carousel > div {
-    min-width: 70vw !important;
     text-align: center;
+    padding: 0.75rem 0;
   }
 
   /* ── Services Bento: Full-width cards ── */
@@ -550,25 +569,19 @@ video.hero-bg {
     border-radius: 10px !important;
   }
 
-  /* ── Promotions: Swipeable horizontal strip ── */
+  /* ── Promotions: Compact stacked cards ── */
   .promo-grid {
-    display: flex !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    gap: 1rem !important;
-    padding-bottom: 0.5rem !important;
-    margin-left: -1.25rem;
-    margin-right: -1.25rem;
-    padding-left: 1.25rem !important;
-    padding-right: 1.25rem !important;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+    overflow: visible !important;
   }
-  .promo-grid::-webkit-scrollbar { display: none; }
   .promo-grid > div {
-    min-width: 80vw !important;
-    scroll-snap-align: center;
-    flex-shrink: 0;
+    min-width: unset !important;
+    flex-shrink: unset !important;
+  }
+  .promo-grid .glass-card {
+    padding: 1.25rem 1.5rem !important;
   }
 
   /* ── About Values Grid ── */
@@ -591,10 +604,19 @@ video.hero-bg {
     gap: 2rem !important;
   }
 
-  /* ── Testimonials ── */
+  /* ── Testimonials: Compact stacked ── */
   .testimonial-card {
-    padding: 1.75rem 1.5rem !important;
+    padding: 1.25rem 1.25rem !important;
     border-radius: 12px !important;
+  }
+  .testimonials-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+  .testimonial-card p {
+    font-size: 0.82rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 0.75rem !important;
   }
 
   /* ── CTA Section ── */

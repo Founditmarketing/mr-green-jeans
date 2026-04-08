@@ -57,27 +57,52 @@ const services = [
 
 const testimonials = [
   {
-    name: 'Raymond H.',
-    text: 'Words can\'t begin to describe my experience. Mr. Green Jeans went over and beyond to beautify my yard. Not one limb was left on the ground. Everyone couldn\'t believe how neat they left everything. I would tell anyone seeking perfection to call Mr. Green Jeans!',
+    name: 'Morgan W.',
+    text: 'Beyond blessed to have done business with Mr. Green Jeans Tree Service. They removed these trees from my house after a wind storm and promised no out of pocket cost, dealing directly with my insurance and they did just that. Professionals with top tier equipment.',
   },
   {
-    name: 'Robin',
-    text: 'Mr. Green Jeans did an excellent job removing our very large pecan tree that was hit with lightning. They were quick to come give us an estimate, professional and provided quality work. The area looks like it never had a tree there!',
+    name: 'Gaga M.',
+    text: 'I had 5 trees removed today and 3 stumps ground. This company came on time, has respectful staff and did a great job!! They were careful not to let the limbs or trees damage anything on my property, cleaned up and it looks so much better.',
   },
   {
-    name: 'Dave',
-    title: 'Safety Equipment Inspector',
-    text: 'Mr. Green Jeans exceeded our expectations! With their expert tree removal and pruning service, they showed their unmatched skill, efficiency, and dedication. We couldn\'t be more impressed or satisfied.',
+    name: 'Lindsay A.',
+    text: 'Central Louisiana\'s finest tree care service. They dealt directly with my insurance company, I had zero out of pocket cost and did everything they said they would. This company is professional, fast and has top tier people and equipment.',
   },
   {
-    name: 'Melissa',
-    title: 'Senior Care Professional',
-    text: 'Impressive is the only way to describe this tree service. Fast, safe, and so reasonable in their pricing. No doubt the free estimate was right on target. Love them!',
+    name: 'Jessica M.',
+    text: 'I recently hired Mr. Green Jeans for tree removal and stump grinding, and I couldn\'t be more satisfied. From the initial quote to the final cleanup, they handled everything safely and efficiently, even dealing with a tree touching my house.',
   },
   {
-    name: 'Diane B.',
-    title: 'Nurse & Healthcare Provider',
-    text: 'I am amazed that Mr. Green Jeans was able to take down that dead pine tree next to my house! It was dangerously close to my home and I am most appreciative of how safely they handled this project.',
+    name: 'Connor C.',
+    text: 'Mr. Green Jeans tree service is the best in business! They have the best equipment and the hardest workers. I was very pleased by the job they did for my family. Experts in this industry — great prices and great service!',
+  },
+  {
+    name: 'Martin T.',
+    text: 'Peyton Cormane and his Mr. Green Jeans crew arrived early and worked all day. He positioned their crane and expertly removed a fallen huge 90 plus year old pecan tree from our pool and back yard.',
+  },
+  {
+    name: 'Kim E.',
+    text: 'When they came, they got the job done quickly and efficiently. I asked them to make chairs out of the stumps. Cleaned everything up extremely well. Even helped me repair my fence for my dog.',
+  },
+  {
+    name: 'Chris T.',
+    text: 'They did a nice job, worked from 7 am to 5 pm to do it all in one day and even cleaned the area around the house along with our car. They also fixed the front yard when their truck was flatting some parts of it.',
+  },
+  {
+    name: 'Kenneth W.',
+    text: 'This is the first time we have used Mr. Green Jeans. Mr. Colton and the crew did an excellent job. They were very professional and efficient. I would highly recommend them to anyone needing tree service.',
+  },
+  {
+    name: 'Mallory W.',
+    text: 'If you\'re looking for the best, go ahead and give Mr. Green Jeans a call. Quick, safe, and the cleanup was immaculate!!',
+  },
+  {
+    name: 'Beverly R.',
+    text: 'These guys were truly professional from the beginning to the end. I would highly recommend them to anyone who is seeking tree services.',
+  },
+  {
+    name: 'Lacy L.',
+    text: 'Mr. Green Jeans came out when I closed on my first rental property that had HORRIBLE hanging limbs and 2 trees needing to be removed. From the second I called for a quote, to the moment they cut the last limb — EVERYONE was wonderful.',
   },
 ];
 
@@ -297,31 +322,28 @@ export default function Home() {
       <section className="section" style={{ background: 'var(--forest)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
-            <div className="section-label" style={{ justifyContent: 'center' }}>Testimonials</div>
+            <div className="section-label" style={{ justifyContent: 'center' }}>Google Reviews</div>
             <h2 className="section-title" style={{ textAlign: 'center' }}>What Our Clients Say</h2>
             <p style={{ fontSize: '0.95rem', color: 'var(--sage)', lineHeight: 1.7 }}>
-              We are driven by the great feedback from our customers. Their satisfaction is our greatest reward.
+              Real reviews from real customers. Our 5-star reputation speaks for itself.
             </p>
           </div>
 
-          <div className="carousel-wrapper">
-            <div className="mobile-carousel hide-scrollbar" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
-              {testimonials.slice(0, 3).map((t, idx) => (
-                <motion.div key={idx} className="testimonial-card"
-                  initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }} transition={{ delay: idx * 0.1 }}>
-                  <div className="testimonial-stars">
-                    {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="var(--gold)" color="var(--gold)" />)}
-                  </div>
-                  <p style={{ fontSize: '0.9rem', lineHeight: 1.75, color: 'var(--sage)', marginBottom: '1.5rem', position: 'relative', zIndex: 1 }}>{t.text}</p>
-                  <div>
-                    <div style={{ fontFamily: 'Playfair Display', fontSize: '1rem', fontWeight: 600, color: 'var(--cream)' }}>{t.name}</div>
-                    {t.title && <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--gold)', marginTop: '0.2rem' }}>{t.title}</div>}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            <SwipeHint />
+          <div className="testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+            {testimonials.slice(0, 6).map((t, idx) => (
+              <motion.div key={idx} className="testimonial-card"
+                initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }} transition={{ delay: idx * 0.06 }}>
+                <div className="testimonial-stars">
+                  {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="var(--gold)" color="var(--gold)" />)}
+                </div>
+                <p style={{ fontSize: '0.88rem', lineHeight: 1.7, color: 'var(--sage)', marginBottom: '1rem', position: 'relative', zIndex: 1 }}>{t.text}</p>
+                <div>
+                  <div style={{ fontFamily: 'Playfair Display', fontSize: '0.95rem', fontWeight: 600, color: 'var(--cream)' }}>{t.name}</div>
+                  <div style={{ fontFamily: 'Barlow Condensed', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--gold)', marginTop: '0.15rem' }}>Google Review ★</div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
